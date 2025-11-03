@@ -13,7 +13,7 @@
     header p { color: #94a3b8; font-size: 1.2rem; margin-top: .5rem; }
 
     nav { background: #1e293b; display: flex; justify-content: center; gap: 2rem; padding: 1rem; }
-    nav a { color: #e2e8f0; text-decoration: none; font-weight: 500; }
+    nav a { color: #e2e8f0; text-decoration: none; font-weight: 500; transition: 0.3s; }
     nav a:hover { color: #38bdf8; }
 
     section { max-width: 1000px; margin: 4rem auto; padding: 0 1rem; }
@@ -63,63 +63,64 @@
 
   <nav>
     <a href="#about">About</a>
-    <a href="#projects">Projects</a>
+    <a href="#projects">Featured Projects</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <section id="about" class="about">
     <h2>About Me</h2>
     <p>
-      I'm a robotics engineer passionate about autonomous systems and intelligent machines. My projects span ROS 2, computer vision, and embedded systems — turning ideas into real, working robots.
+      I’m a robotics engineer passionate about building autonomous systems that combine ROS 2, computer vision, and embedded control.
+      My projects focus on practical applications like hospital robots, sensor fusion, and smart automation.
     </p>
   </section>
 
   <section id="projects" class="projects">
-    <h2>Highlighted Projects</h2>
+    <h2>Featured Projects</h2>
     <div class="projects-grid">
       <div class="project-card">
-        <a href="https://github.com/samshoni/ros2-autonomous-docking">🤖 Autonomous Docking (ROS 2)</a>
-        <p>Autonomous docking system with state machine control and precision navigation in ROS 2 Humble.</p>
+        <a href="https://github.com/samshoni/ros2-autonomous-docking">🤖 ROS2 Autonomous Docking</a>
+        <p>Autonomous docking system with state machine control, precision navigation, and power management.</p>
       </div>
 
       <div class="project-card">
-        <a href="https://github.com/samshoni/Extended-Kalman-Filter-ros2-sensor-fusion">📡 Sensor Fusion (EKF)</a>
-        <p>Combines IMU and odometry data using Extended Kalman Filter for improved localization accuracy.</p>
+        <a href="https://github.com/samshoni/Extended-Kalman-Filter-ros2-sensor-fusion">📡 Extended Kalman Filter Sensor Fusion</a>
+        <p>Multi-sensor fusion combining IMU and odometry data for accurate robot localization in ROS 2.</p>
       </div>
 
       <div class="project-card">
-        <a href="https://github.com/samshoni/smart-car-retrieval-using-face-recognition-ros2">🚗 Smart Car Retrieval</a>
-        <p>ROS 2 system that recognizes authorized faces and automatically retrieves vehicles in smart parking setups.</p>
+        <a href="https://github.com/samshoni/smart-car-retrieval-using-face-recognition-ros2">🚗 Smart Car Retrieval Using Face Recognition</a>
+        <p>Facial recognition–based car retrieval system using ROS 2 and OpenCV.</p>
       </div>
 
       <div class="project-card">
-        <a href="https://github.com/samshoni/finger-count-led-ros2">🖐️ Finger Count LED Control</a>
-        <p>Real-time finger counting using OpenCV + ROS 2 to control LEDs through Arduino Mega.</p>
+        <a href="https://github.com/samshoni/finger-count-led-ros2">🖐️ Finger Count LED ROS2</a>
+        <p>Counts fingers via OpenCV + ROS 2 and controls LEDs through Arduino Mega.</p>
       </div>
 
       <div class="project-card">
-        <a href="https://github.com/samshoni/my_slam_robot">🗺️ SLAM Mobile Robot</a>
-        <p>Performs mapping and localization in a custom Gazebo environment using ROS 2 navigation stack.</p>
+        <a href="https://github.com/samshoni/my_slam_robot">🗺️ My SLAM Robot</a>
+        <p>Custom mobile robot performing SLAM in Gazebo with ROS 2 Navigation Stack.</p>
       </div>
 
       <div class="project-card">
-        <a href="https://github.com/samshoni/Self-Balancing-Robot-PID-Controller">⚙️ Self-Balancing Robot</a>
-        <p>Two-wheeled balancing robot using MPU6050 and PID controller implemented on Arduino.</p>
+        <a href="https://github.com/samshoni/Self-Balancing-Robot-PID-Controller">⚙️ Self Balancing Robot (PID)</a>
+        <p>Arduino-based self-balancing two-wheeled robot using MPU6050 and PID control.</p>
       </div>
 
       <div class="project-card">
-        <a href="https://github.com/samshoni/Automated-6DOF-Robotic-Arm-with-GUI">🦾 6-DOF Robotic Arm</a>
-        <p>Automated robotic arm with custom GUI built in Processing for intuitive control and monitoring.</p>
+        <a href="https://github.com/samshoni/Automated-6DOF-Robotic-Arm-with-GUI">🦾 Automated 6DOF Robotic Arm</a>
+        <p>6-DOF robotic arm with a custom GUI built using Processing for control and monitoring.</p>
       </div>
 
       <div class="project-card">
-        <a href="https://github.com/samshoni/lane_detection_using_python">🛣️ Lane Detection (OpenCV)</a>
-        <p>Computer vision project for detecting lane lines in road images using Python and OpenCV.</p>
+        <a href="https://github.com/samshoni/lane_detection_using_python">🛣️ Lane Detection using Python</a>
+        <p>Computer vision–based lane detection for self-driving applications using OpenCV.</p>
       </div>
 
       <div class="project-card">
         <a href="https://github.com/samshoni/Smart-Door-Lock-RFID">🔐 Smart Door Lock (RFID)</a>
-        <p>Contactless access system using EM-18 RFID module with Arduino Mega.</p>
+        <p>Arduino-based secure access system using EM-18 RFID reader and servo control.</p>
       </div>
     </div>
   </section>
@@ -132,7 +133,7 @@
   </section>
 
   <footer>
-    © 2025 Sam Shoni | Built with ❤️ on GitHub Pages
+    © 2025 Sam Shoni | Built with ❤️ using GitHub Pages
   </footer>
 </body>
 </html>
