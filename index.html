@@ -4,201 +4,136 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sam Shoni | Robotics & AI Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
     body { font-family: 'Poppins', sans-serif; background: #0f172a; color: #e2e8f0; }
+    header { text-align: center; padding: 4rem 1rem; background: linear-gradient(135deg, #1e293b, #0f172a); }
+    header h1 { font-size: 2.8rem; color: #38bdf8; }
+    header p { color: #94a3b8; font-size: 1.2rem; margin-top: .5rem; }
 
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)),
-                  url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1950&q=80') center/cover;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      text-align: center; padding: 2rem 1rem;
-      position: relative;
-    }
-
-    .hero img {
-      width: 150px; height: 150px; border-radius: 50%;
-      object-fit: cover; border: 3px solid #38bdf8; margin-bottom: 1rem;
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-      animation: float 4s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .hero h1 { font-size: 2.8rem; color: #38bdf8; }
-    .hero p { font-size: 1.2rem; color: #94a3b8; margin-top: 0.5rem; max-width: 700px; }
-    .hero a {
-      display: inline-block; margin-top: 2rem; padding: 0.8rem 1.6rem;
-      background: #38bdf8; color: #0f172a; border-radius: 6px; text-decoration: none;
-      font-weight: 600; transition: 0.3s;
-    }
-    .hero a:hover { background: #0ea5e9; }
-
-    /* Navigation */
-    nav {
-      background: #1e293b;
-      display: flex; justify-content: center; gap: 2rem;
-      padding: 1rem; position: sticky; top: 0; z-index: 100;
-      backdrop-filter: blur(10px);
-    }
+    nav { background: #1e293b; display: flex; justify-content: center; gap: 2rem; padding: 1rem; }
     nav a { color: #e2e8f0; text-decoration: none; font-weight: 500; }
     nav a:hover { color: #38bdf8; }
 
-    section { max-width: 950px; margin: 4rem auto; padding: 0 1.5rem; }
+    section { max-width: 1000px; margin: 4rem auto; padding: 0 1rem; }
+    h2 { color: #38bdf8; font-size: 1.8rem; margin-bottom: 1rem; }
 
-    h2 { color: #38bdf8; margin-bottom: 1rem; font-size: 1.8rem; }
+    .about p { line-height: 1.8; color: #cbd5e1; font-size: 1.1rem; }
 
-    /* About */
-    .about p { line-height: 1.6; color: #cbd5e1; }
-
-    /* Skills */
-    .skills-list { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
-    .skill { background: #1e293b; color: #e2e8f0; padding: 0.6rem 1.2rem; border-radius: 6px; }
-
-    /* Projects */
     .projects-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem; margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
     }
 
-    .project {
-      background: #1e293b; border-radius: 10px; overflow: hidden;
-      transition: 0.3s; box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    .project-card {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 1.2rem;
+      transition: transform .3s ease, box-shadow .3s ease;
     }
-    .project:hover { transform: translateY(-5px); background: #334155; }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(56,189,248,0.2);
+    }
 
-    .project img { width: 100%; height: 160px; object-fit: cover; }
-    .project-content { padding: 1rem; }
-    .project h3 { color: #38bdf8; font-size: 1.1rem; }
-    .project p { color: #cbd5e1; margin: 0.4rem 0 1rem; font-size: 0.95rem; }
-    .project a { color: #38bdf8; text-decoration: none; font-weight: 600; }
+    .project-card a {
+      color: #38bdf8;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+    }
+    .project-card p { color: #94a3b8; margin-top: .5rem; font-size: .95rem; }
 
-    /* Contact */
-    .contact p { margin-bottom: 0.6rem; }
     .contact a { color: #38bdf8; text-decoration: none; }
-
-    /* Footer */
-    footer { text-align: center; background: #1e293b; padding: 1rem; color: #94a3b8; }
+    footer { text-align: center; background: #1e293b; padding: 1.2rem; color: #94a3b8; font-size: .9rem; margin-top: 3rem; }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2rem; }
-      nav { flex-direction: column; gap: 1rem; }
+      header h1 { font-size: 2rem; }
+      nav { flex-wrap: wrap; }
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Sam Shoni</h1>
+    <p>Robotics & AI Engineer | ROS 2 Developer</p>
+  </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <img src="https://avatars.githubusercontent.com/u/163070001?v=4" alt="Sam Shoni Photo"> <!-- Replace if needed -->
-    <h1>Hi, I'm Sam Shoni 👋</h1>
-    <p>Robotics & AI Engineer | ROS 2 Developer | Innovator in Healthcare & Autonomous Systems</p>
-    <a href="#projects">View My Projects</a>
-  </section>
-
-  <!-- Navigation -->
   <nav>
     <a href="#about">About</a>
-    <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </nav>
 
-  <!-- About -->
   <section id="about" class="about">
     <h2>About Me</h2>
     <p>
-      I'm a passionate Robotics and AI Engineer focused on developing autonomous systems that improve human life. 
-      Currently building a <b>hospital service robot using ROS 2</b> that autonomously navigates to patient rooms and collects vitals.  
-      I love merging <b>AI, embedded systems, and computer vision</b> to create real-world intelligent robots.
+      I'm a robotics engineer passionate about autonomous systems and intelligent machines. My projects span ROS 2, computer vision, and embedded systems — turning ideas into real, working robots.
     </p>
   </section>
 
-  <!-- Skills -->
-  <section id="skills" class="skills">
-    <h2>Technical Skills</h2>
-    <div class="skills-list">
-      <span class="skill">ROS 2</span>
-      <span class="skill">Python</span>
-      <span class="skill">OpenCV</span>
-      <span class="skill">Arduino / ESP32</span>
-      <span class="skill">Machine Learning</span>
-      <span class="skill">Computer Vision</span>
-      <span class="skill">IoT Systems</span>
-      <span class="skill">Embedded C</span>
-    </div>
-  </section>
-
-  <!-- Projects -->
   <section id="projects" class="projects">
-    <h2>Featured Projects</h2>
+    <h2>Highlighted Projects</h2>
     <div class="projects-grid">
-
-      <div class="project">
-        <img src="https://raw.githubusercontent.com/samshoni/hospital-robot/main/images/hospital_robot.jpg" alt="Hospital Robot">
-        <div class="project-content">
-          <h3>🏥 Autonomous Vitals Collecting Hospital Robot</h3>
-          <p>ROS 2-based robot that autonomously navigates hospital rooms and collects patient vitals like temperature and pulse.</p>
-          <a href="https://github.com/samshoni/hospital-robot" target="_blank">View on GitHub →</a>
-        </div>
+      <div class="project-card">
+        <a href="https://github.com/samshoni/ros2-autonomous-docking">🤖 Autonomous Docking (ROS 2)</a>
+        <p>Autonomous docking system with state machine control and precision navigation in ROS 2 Humble.</p>
       </div>
 
-      <div class="project">
-        <img src="https://raw.githubusercontent.com/samshoni/lane-detection/main/images/lane_detection.jpg" alt="Lane Detection">
-        <div class="project-content">
-          <h3>🚗 Self-Driving Car Lane Detection</h3>
-          <p>OpenCV + Python project that detects and highlights road lanes from camera input for autonomous navigation.</p>
-          <a href="https://github.com/samshoni/lane-detection" target="_blank">View on GitHub →</a>
-        </div>
+      <div class="project-card">
+        <a href="https://github.com/samshoni/Extended-Kalman-Filter-ros2-sensor-fusion">📡 Sensor Fusion (EKF)</a>
+        <p>Combines IMU and odometry data using Extended Kalman Filter for improved localization accuracy.</p>
       </div>
 
-      <div class="project">
-        <img src="https://raw.githubusercontent.com/samshoni/voice-control-bot/main/images/voice_bot.jpg" alt="Voice Control Bot">
-        <div class="project-content">
-          <h3>🎤 Voice Controlled Robot (ROS 2)</h3>
-          <p>ROS 2 robot that listens to human voice commands and performs actions using speech-to-text and motor control.</p>
-          <a href="https://github.com/samshoni/voice-control-bot" target="_blank">View on GitHub →</a>
-        </div>
+      <div class="project-card">
+        <a href="https://github.com/samshoni/smart-car-retrieval-using-face-recognition-ros2">🚗 Smart Car Retrieval</a>
+        <p>ROS 2 system that recognizes authorized faces and automatically retrieves vehicles in smart parking setups.</p>
       </div>
 
-      <div class="project">
-        <img src="https://raw.githubusercontent.com/samshoni/emotion-detector/main/images/emotion.jpg" alt="Emotion Detector">
-        <div class="project-content">
-          <h3>😊 Emotion, Age & Gender Detector</h3>
-          <p>Computer vision project that uses OpenCV to identify human emotion, age, and gender from live camera feed.</p>
-          <a href="https://github.com/samshoni/emotion-detector" target="_blank">View on GitHub →</a>
-        </div>
+      <div class="project-card">
+        <a href="https://github.com/samshoni/finger-count-led-ros2">🖐️ Finger Count LED Control</a>
+        <p>Real-time finger counting using OpenCV + ROS 2 to control LEDs through Arduino Mega.</p>
       </div>
 
-      <div class="project">
-        <img src="https://raw.githubusercontent.com/samshoni/qr-code-bot/main/images/qr_bot.jpg" alt="QR Code Bot">
-        <div class="project-content">
-          <h3>🔍 QR Code Reader Bot (ROS 2)</h3>
-          <p>Autonomous ROS 2 robot that detects QR codes for navigation and object recognition in structured environments.</p>
-          <a href="https://github.com/samshoni/qr-code-bot" target="_blank">View on GitHub →</a>
-        </div>
+      <div class="project-card">
+        <a href="https://github.com/samshoni/my_slam_robot">🗺️ SLAM Mobile Robot</a>
+        <p>Performs mapping and localization in a custom Gazebo environment using ROS 2 navigation stack.</p>
       </div>
 
+      <div class="project-card">
+        <a href="https://github.com/samshoni/Self-Balancing-Robot-PID-Controller">⚙️ Self-Balancing Robot</a>
+        <p>Two-wheeled balancing robot using MPU6050 and PID controller implemented on Arduino.</p>
+      </div>
+
+      <div class="project-card">
+        <a href="https://github.com/samshoni/Automated-6DOF-Robotic-Arm-with-GUI">🦾 6-DOF Robotic Arm</a>
+        <p>Automated robotic arm with custom GUI built in Processing for intuitive control and monitoring.</p>
+      </div>
+
+      <div class="project-card">
+        <a href="https://github.com/samshoni/lane_detection_using_python">🛣️ Lane Detection (OpenCV)</a>
+        <p>Computer vision project for detecting lane lines in road images using Python and OpenCV.</p>
+      </div>
+
+      <div class="project-card">
+        <a href="https://github.com/samshoni/Smart-Door-Lock-RFID">🔐 Smart Door Lock (RFID)</a>
+        <p>Contactless access system using EM-18 RFID module with Arduino Mega.</p>
+      </div>
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact" class="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:samshoni10@gmail.com">samshoni10@gmail.com</a></p>
-    <p>GitHub: <a href="https://github.com/samshoni" target="_blank">github.com/samshoni</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/sam-shoni-7b2b94301" target="_blank">linkedin.com/in/sam-shoni-7b2b94301</a></p>
+    <p>GitHub: <a href="https://github.com/samshoni">github.com/samshoni</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/sam-shoni-7b2b94301">linkedin.com/in/sam-shoni-7b2b94301</a></p>
   </section>
 
   <footer>
-    © 2025 Sam Shoni | Built with ❤️ using GitHub Pages
+    © 2025 Sam Shoni | Built with ❤️ on GitHub Pages
   </footer>
-
 </body>
 </html>
+
