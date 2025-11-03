@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sam Shoni | Robotics & AI Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
@@ -11,24 +11,42 @@
 
     /* Hero Section */
     .hero {
-      height: 100vh;
-      background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)),
-                  url('https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?auto=format&fit=crop&w=1920&q=80') center/cover;
+      min-height: 100vh;
+      background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)),
+                  url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1950&q=80') center/cover;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
-      text-align: center; padding: 0 1rem;
+      text-align: center; padding: 2rem 1rem;
+      position: relative;
     }
-    .hero h1 { font-size: 3rem; color: #38bdf8; }
-    .hero p { font-size: 1.3rem; color: #94a3b8; margin-top: 1rem; }
+
+    .hero img {
+      width: 150px; height: 150px; border-radius: 50%;
+      object-fit: cover; border: 3px solid #38bdf8; margin-bottom: 1rem;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hero h1 { font-size: 2.8rem; color: #38bdf8; }
+    .hero p { font-size: 1.2rem; color: #94a3b8; margin-top: 0.5rem; max-width: 700px; }
     .hero a {
-      display: inline-block;
-      margin-top: 2rem; padding: 0.8rem 1.6rem;
+      display: inline-block; margin-top: 2rem; padding: 0.8rem 1.6rem;
       background: #38bdf8; color: #0f172a; border-radius: 6px; text-decoration: none;
       font-weight: 600; transition: 0.3s;
     }
     .hero a:hover { background: #0ea5e9; }
 
     /* Navigation */
-    nav { background: #1e293b; display: flex; justify-content: center; gap: 2rem; padding: 1rem; position: sticky; top: 0; z-index: 100; }
+    nav {
+      background: #1e293b;
+      display: flex; justify-content: center; gap: 2rem;
+      padding: 1rem; position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(10px);
+    }
     nav a { color: #e2e8f0; text-decoration: none; font-weight: 500; }
     nav a:hover { color: #38bdf8; }
 
@@ -44,11 +62,21 @@
     .skill { background: #1e293b; color: #e2e8f0; padding: 0.6rem 1.2rem; border-radius: 6px; }
 
     /* Projects */
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-    .project { background: #1e293b; padding: 1.5rem; border-radius: 10px; transition: 0.3s; }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 1.5rem;
+    }
+
+    .project {
+      background: #1e293b; border-radius: 10px; overflow: hidden;
+      transition: 0.3s; box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
     .project:hover { transform: translateY(-5px); background: #334155; }
-    .project h3 { color: #38bdf8; }
-    .project p { color: #cbd5e1; margin: 0.5rem 0 1rem; }
+
+    .project img { width: 100%; height: 160px; object-fit: cover; }
+    .project-content { padding: 1rem; }
+    .project h3 { color: #38bdf8; font-size: 1.1rem; }
+    .project p { color: #cbd5e1; margin: 0.4rem 0 1rem; font-size: 0.95rem; }
     .project a { color: #38bdf8; text-decoration: none; font-weight: 600; }
 
     /* Contact */
@@ -59,17 +87,18 @@
     footer { text-align: center; background: #1e293b; padding: 1rem; color: #94a3b8; }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.3rem; }
+      .hero h1 { font-size: 2rem; }
       nav { flex-direction: column; gap: 1rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section class="hero">
+    <img src="https://avatars.githubusercontent.com/u/163070001?v=4" alt="Sam Shoni Photo"> <!-- Replace if needed -->
     <h1>Hi, I'm Sam Shoni 👋</h1>
-    <p>Robotics & AI Engineer | ROS 2 Developer | Innovator in Healthcare Robotics</p>
+    <p>Robotics & AI Engineer | ROS 2 Developer | Innovator in Healthcare & Autonomous Systems</p>
     <a href="#projects">View My Projects</a>
   </section>
 
@@ -85,9 +114,9 @@
   <section id="about" class="about">
     <h2>About Me</h2>
     <p>
-      I'm a robotics engineer passionate about building autonomous systems that make real-world impact. 
-      Currently developing a hospital service robot using ROS 2 to autonomously navigate patient rooms and collect vitals. 
-      I enjoy combining AI, computer vision, and embedded systems to create intelligent robots for social good.
+      I'm a passionate Robotics and AI Engineer focused on developing autonomous systems that improve human life. 
+      Currently building a <b>hospital service robot using ROS 2</b> that autonomously navigates to patient rooms and collects vitals.  
+      I love merging <b>AI, embedded systems, and computer vision</b> to create real-world intelligent robots.
     </p>
   </section>
 
@@ -112,33 +141,48 @@
     <div class="projects-grid">
 
       <div class="project">
-        <h3>🏥 Autonomous Vitals Collecting Hospital Robot</h3>
-        <p>ROS 2 robot that navigates hospital rooms and collects patient vitals using sensors like MAX30102 and MLX90614.</p>
-        <a href="https://github.com/samshoni/hospital-robot" target="_blank">View on GitHub →</a>
+        <img src="https://raw.githubusercontent.com/samshoni/hospital-robot/main/images/hospital_robot.jpg" alt="Hospital Robot">
+        <div class="project-content">
+          <h3>🏥 Autonomous Vitals Collecting Hospital Robot</h3>
+          <p>ROS 2-based robot that autonomously navigates hospital rooms and collects patient vitals like temperature and pulse.</p>
+          <a href="https://github.com/samshoni/hospital-robot" target="_blank">View on GitHub →</a>
+        </div>
       </div>
 
       <div class="project">
-        <h3>🚗 Self-Driving Car Lane Detection</h3>
-        <p>Computer vision-based lane detection system using OpenCV and Python for autonomous driving research.</p>
-        <a href="https://github.com/samshoni/lane-detection" target="_blank">View on GitHub →</a>
+        <img src="https://raw.githubusercontent.com/samshoni/lane-detection/main/images/lane_detection.jpg" alt="Lane Detection">
+        <div class="project-content">
+          <h3>🚗 Self-Driving Car Lane Detection</h3>
+          <p>OpenCV + Python project that detects and highlights road lanes from camera input for autonomous navigation.</p>
+          <a href="https://github.com/samshoni/lane-detection" target="_blank">View on GitHub →</a>
+        </div>
       </div>
 
       <div class="project">
-        <h3>🎤 Voice Controlled Robot (ROS 2)</h3>
-        <p>Robot that takes human voice commands and performs corresponding movement actions.</p>
-        <a href="https://github.com/samshoni/voice-control-bot" target="_blank">View on GitHub →</a>
+        <img src="https://raw.githubusercontent.com/samshoni/voice-control-bot/main/images/voice_bot.jpg" alt="Voice Control Bot">
+        <div class="project-content">
+          <h3>🎤 Voice Controlled Robot (ROS 2)</h3>
+          <p>ROS 2 robot that listens to human voice commands and performs actions using speech-to-text and motor control.</p>
+          <a href="https://github.com/samshoni/voice-control-bot" target="_blank">View on GitHub →</a>
+        </div>
       </div>
 
       <div class="project">
-        <h3>😊 Emotion, Age & Gender Detector</h3>
-        <p>AI system built with OpenCV that identifies emotion, age, and gender from camera input in real time.</p>
-        <a href="https://github.com/samshoni/emotion-detector" target="_blank">View on GitHub →</a>
+        <img src="https://raw.githubusercontent.com/samshoni/emotion-detector/main/images/emotion.jpg" alt="Emotion Detector">
+        <div class="project-content">
+          <h3>😊 Emotion, Age & Gender Detector</h3>
+          <p>Computer vision project that uses OpenCV to identify human emotion, age, and gender from live camera feed.</p>
+          <a href="https://github.com/samshoni/emotion-detector" target="_blank">View on GitHub →</a>
+        </div>
       </div>
 
       <div class="project">
-        <h3>🔍 QR Code Reader Bot (ROS 2)</h3>
-        <p>Autonomous robot that scans QR codes for indoor navigation and data collection tasks.</p>
-        <a href="https://github.com/samshoni/qr-code-bot" target="_blank">View on GitHub →</a>
+        <img src="https://raw.githubusercontent.com/samshoni/qr-code-bot/main/images/qr_bot.jpg" alt="QR Code Bot">
+        <div class="project-content">
+          <h3>🔍 QR Code Reader Bot (ROS 2)</h3>
+          <p>Autonomous ROS 2 robot that detects QR codes for navigation and object recognition in structured environments.</p>
+          <a href="https://github.com/samshoni/qr-code-bot" target="_blank">View on GitHub →</a>
+        </div>
       </div>
 
     </div>
