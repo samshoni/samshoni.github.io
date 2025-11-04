@@ -12,69 +12,222 @@
       scroll-behavior: smooth;
     }
 
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1e40af;
-      --accent: #7c3aed;
-      --accent-dark: #6d28d9;
-      --bg-light: #ffffff;
-      --bg-light-secondary: #f8fafc;
-      --text-light: #1f2937;
-      --text-light-secondary: #6b7280;
-      --border-light: #e5e7eb;
-    }
-
-    html {
-      --theme: light;
-    }
-
-    html.dark-mode {
-      --primary: #3b82f6;
-      --primary-dark: #2563eb;
-      --accent: #8b5cf6;
-      --accent-dark: #7c3aed;
-      --bg-light: #0f172a;
-      --bg-light-secondary: #1e293b;
-      --text-light: #f1f5f9;
-      --text-light-secondary: #cbd5e1;
-      --border-light: #334155;
-    }
-
     html, body {
       width: 100%;
       overflow-x: hidden;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-light);
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #1f2937;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Gradient Text Animation */
-    .gradient-text {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    body.dark-mode {
+      background-color: #0f172a;
+      color: #f1f5f9;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode .navbar {
+      background: rgba(15, 23, 42, 0.98);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .navbar-content {
+      max-width: 7xl;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .navbar-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #2563eb 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      animation: gradientShift 3s ease infinite;
+      animation: nameFlow 4s ease infinite;
     }
 
-    @keyframes gradientShift {
-      0%, 100% { filter: hue-rotate(0deg); }
-      50% { filter: hue-rotate(15deg); }
+    @keyframes nameFlow {
+      0%, 100% {
+        background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #2563eb 100%);
+      }
+      50% {
+        background: linear-gradient(135deg, #7c3aed 0%, #2563eb 50%, #7c3aed 100%);
+      }
     }
 
-    /* Floating Animation */
-    .float {
-      animation: float 3s ease-in-out infinite;
+    .nav-links {
+      display: none;
+      gap: 2rem;
     }
 
-    @keyframes float {
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+      color: #6b7280;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    body.dark-mode .nav-link {
+      color: #cbd5e1;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-link:hover {
+      color: #2563eb;
+    }
+
+    body.dark-mode .nav-link:hover {
+      color: #60a5fa;
+    }
+
+    .hamburger {
+      display: block;
+      background: none;
+      border: none;
+      color: #1f2937;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    body.dark-mode .hamburger {
+      color: #f1f5f9;
+    }
+
+    @media (min-width: 768px) {
+      .hamburger {
+        display: none;
+      }
+    }
+
+    /* Theme Toggle - Bottom Right */
+    .theme-toggle {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      border: none;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+      transition: all 0.3s ease;
+      z-index: 45;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1) rotate(20deg);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #f5f3ff 100%);
+      transition: background 0.3s ease;
+    }
+
+    body.dark-mode .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1a2a4a 50%, #16213e 100%);
+    }
+
+    .hero-bg-blob-1 {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.15), transparent);
+      border-radius: 50%;
+      top: 10%;
+      left: 5%;
+      animation: float1 6s ease-in-out infinite;
+      filter: blur(40px);
+    }
+
+    .hero-bg-blob-2 {
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.15), transparent);
+      border-radius: 50%;
+      bottom: -5%;
+      right: 5%;
+      animation: float2 8s ease-in-out infinite;
+      filter: blur(40px);
+    }
+
+    @keyframes float1 {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
+      50% { transform: translateY(-30px); }
     }
 
-    /* Smooth Fade-In */
-    .fade-in {
+    @keyframes float2 {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(30px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 1200px;
+      width: 100%;
       animation: fadeIn 0.8s ease-in;
     }
 
@@ -89,284 +242,609 @@
       }
     }
 
-    /* Staggered Animation for Cards */
-    .card-stagger {
-      animation: fadeIn 0.8s ease-in forwards;
-      opacity: 0;
+    .emoji-group {
+      margin-bottom: 1.5rem;
     }
 
-    .card-stagger:nth-child(1) { animation-delay: 0.1s; }
-    .card-stagger:nth-child(2) { animation-delay: 0.2s; }
-    .card-stagger:nth-child(3) { animation-delay: 0.3s; }
-
-    /* Hover Glow Effect */
-    .glow-hover {
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .glow-hover::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
-      border-radius: 1rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-    }
-
-    html.dark-mode .glow-hover::before {
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
-    }
-
-    .glow-hover:hover::before {
-      opacity: 1;
-    }
-
-    .glow-hover:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
-    }
-
-    /* Navbar Styles */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-      border-bottom: 1px solid rgba(37, 99, 235, 0.1);
-      transition: all 0.3s ease;
-    }
-
-    html.dark-mode .navbar {
-      background: rgba(15, 23, 42, 0.98);
-      border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-    }
-
-    .nav-link {
-      position: relative;
-      transition: color 0.3s ease;
-      font-weight: 500;
-      color: var(--text-light-secondary);
-      white-space: nowrap;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      transition: width 0.3s ease;
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    .nav-link:hover {
-      color: var(--primary);
-    }
-
-    /* Theme Toggle Button */
-    .theme-toggle {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      border: none;
-      color: white;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-    }
-
-    .theme-toggle:hover {
-      transform: scale(1.1) rotate(20deg);
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
-    }
-
-    /* Project Tag */
-    .project-tag {
+    .emoji-group span {
+      font-size: 2.5rem;
+      margin: 0 0.5rem;
       display: inline-block;
-      padding: 0.25rem 0.75rem;
-      margin: 0.25rem 0.25rem 0.25rem 0;
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
-      border: 1px solid var(--primary);
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--primary);
-      transition: all 0.3s ease;
+      animation: bounce 2s ease-in-out infinite;
     }
 
-    html.dark-mode .project-tag {
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
-      border-color: var(--primary);
-      color: #60a5fa;
+    .emoji-group span:nth-child(2) {
+      animation-delay: 0.2s;
     }
 
-    .project-tag:hover {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: white;
-      border-color: transparent;
+    .emoji-group span:nth-child(3) {
+      animation-delay: 0.4s;
     }
 
-    /* CTA Button */
-    .cta-button {
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero h1 {
+        font-size: 4.5rem;
+      }
+    }
+
+    body.dark-mode .hero h1 {
+      color: #f1f5f9;
+    }
+
+    /* Dynamic Name Animation */
+    .dynamic-name {
       position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      transition: all 0.3s ease;
-      font-weight: 600;
       display: inline-block;
-      text-align: center;
-      border: none;
-      cursor: pointer;
-      color: white;
-      text-decoration: none;
     }
 
-    .cta-button::before {
-      content: '';
+    .dynamic-name::before {
+      content: attr(data-text);
       position: absolute;
+      left: 0;
       top: 0;
-      left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, var(--accent), var(--primary));
-      transition: left 0.3s ease;
-      z-index: -1;
+      background: linear-gradient(90deg, 
+        #2563eb 0%, 
+        #7c3aed 25%, 
+        #ec4899 50%, 
+        #7c3aed 75%, 
+        #2563eb 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: colorFlow 4s linear infinite;
+      font-weight: 900;
     }
 
-    .cta-button:hover::before {
-      left: 0;
+    @keyframes colorFlow {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
     }
 
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+    .dynamic-name {
+      background: linear-gradient(90deg, 
+        #2563eb 0%, 
+        #7c3aed 25%, 
+        #ec4899 50%, 
+        #7c3aed 75%, 
+        #2563eb 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: colorFlow 4s linear infinite;
+      font-weight: 900;
     }
 
-    /* Stats Section */
-    .stat-box {
-      background: linear-gradient(135deg, var(--bg-light-secondary), var(--bg-light));
-      transition: all 0.3s ease;
-      border-radius: 1rem;
-      padding: 1.5rem;
-      border: 1px solid var(--border-light);
-      width: 100%;
+    .hero-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0.5rem 0 1.5rem 0;
+      color: #4b5563;
     }
 
-    html.dark-mode .stat-box {
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      border: 1px solid rgba(59, 130, 246, 0.2);
+    body.dark-mode .hero-title {
+      color: #cbd5e1;
     }
 
-    .stat-box:hover {
-      transform: scale(1.05);
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: white;
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+    /* Profile Section */
+    .profile-section {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+      margin: 2rem 0 3rem 0;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .stat-box:hover .counter {
-      color: white;
+    @media (min-width: 768px) {
+      .profile-section {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
     }
 
-    .counter {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: var(--primary);
-      transition: color 0.3s ease;
+    .profile-image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* Highlight Box */
-    .highlight-box {
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(124, 58, 237, 0.05));
-      border: 2px solid rgba(37, 99, 235, 0.2);
-      border-radius: 1.5rem;
-      padding: 1.5rem;
-      transition: all 0.3s ease;
-      width: 100%;
-    }
-
-    html.dark-mode .highlight-box {
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
-      border: 2px solid rgba(59, 130, 246, 0.3);
-    }
-
-    .highlight-box:hover {
-      border-color: var(--primary);
-      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
-    }
-
-    /* Section Backgrounds */
-    .section-bg {
-      background: var(--bg-light-secondary);
-      transition: background-color 0.3s ease;
-    }
-
-    html.dark-mode .section-bg {
-      background: #1e293b;
-    }
-
-    /* Professional Text */
-    .professional-text {
-      letter-spacing: 0.5px;
-      line-height: 1.8;
-    }
-
-    /* Profile Image */
     .profile-image {
-      width: 200px;
-      height: 200px;
+      width: 100%;
+      max-width: 300px;
+      height: auto;
       border-radius: 20px;
-      object-fit: cover;
-      border: 4px solid var(--primary);
-      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 20px 60px rgba(37, 99, 235, 0.2);
+      border: 4px solid #2563eb;
       transition: all 0.3s ease;
+      object-fit: cover;
     }
 
-    html.dark-mode .profile-image {
-      border-color: var(--primary);
-      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+    @media (min-width: 768px) {
+      .profile-image {
+        max-width: 280px;
+      }
     }
 
     .profile-image:hover {
       transform: scale(1.05) rotate(-2deg);
-      box-shadow: 0 25px 50px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 30px 80px rgba(37, 99, 235, 0.3);
+      border-color: #7c3aed;
     }
 
-    /* Back to Top Button */
-    .back-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+    body.dark-mode .profile-image {
+      border-color: #60a5fa;
+      box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
+    }
+
+    body.dark-mode .profile-image:hover {
+      box-shadow: 0 30px 80px rgba(59, 130, 246, 0.4);
+      border-color: #8b5cf6;
+    }
+
+    /* About Box */
+    .about-box {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(37, 99, 235, 0.2);
+      border-radius: 15px;
+      padding: 1.5rem;
+      text-align: left;
+      transition: all 0.3s ease;
+    }
+
+    @media (min-width: 768px) {
+      .about-box {
+        padding: 2rem;
+      }
+    }
+
+    body.dark-mode .about-box {
+      background: rgba(30, 41, 59, 0.9);
+      border: 2px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .about-box:hover {
+      border-color: #2563eb;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+    }
+
+    body.dark-mode .about-box:hover {
+      border-color: #60a5fa;
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+    }
+
+    .about-box p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #4b5563;
+      margin: 0;
+    }
+
+    body.dark-mode .about-box p {
+      color: #cbd5e1;
+    }
+
+    .about-box strong {
+      color: #2563eb;
+      font-weight: 600;
+    }
+
+    body.dark-mode .about-box strong {
+      color: #60a5fa;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (min-width: 768px) {
+      .stats-grid {
+        gap: 1.5rem;
+        max-width: 700px;
+      }
+    }
+
+    .stat-box {
+      background: linear-gradient(135deg, #f0f9ff, #ede9fe);
+      border: 1px solid rgba(37, 99, 235, 0.1);
+      border-radius: 12px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode .stat-box {
+      background: linear-gradient(135deg, #1e293b, #312e81);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .stat-box:hover {
+      transform: translateY(-5px);
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
       color: white;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+      box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2);
+    }
+
+    .stat-number {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: #2563eb;
+      transition: color 0.3s ease;
+    }
+
+    body.dark-mode .stat-number {
+      color: #60a5fa;
+    }
+
+    .stat-box:hover .stat-number {
+      color: white;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #6b7280;
+      margin-top: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    body.dark-mode .stat-label {
+      color: #94a3b8;
+    }
+
+    .stat-box:hover .stat-label {
+      color: white;
+    }
+
+    /* CTA Buttons */
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 2rem 0;
+      justify-content: center;
+    }
+
+    @media (min-width: 640px) {
+      .cta-group {
+        flex-direction: row;
+        gap: 1.5rem;
+      }
+    }
+
+    .cta-button {
+      padding: 0.875rem 1.75rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .cta-primary {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.3);
+    }
+
+    .cta-secondary {
+      background: #e5e7eb;
+      color: #1f2937;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode .cta-secondary {
+      background: #374151;
+      color: #f1f5f9;
+    }
+
+    .cta-secondary:hover {
+      transform: translateY(-3px);
+      background: #d1d5db;
+    }
+
+    body.dark-mode .cta-secondary:hover {
+      background: #4b5563;
+    }
+
+    .lets-talk-btn {
+      background: linear-gradient(135deg, #10b981, #06b6d4);
+      color: white;
+      padding: 0.875rem 1.75rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+    }
+
+    .lets-talk-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.3);
+    }
+
+    /* Social Links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+      font-size: 1.75rem;
+    }
+
+    .social-link {
+      color: #6b7280;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    body.dark-mode .social-link {
+      color: #94a3b8;
+    }
+
+    .social-link:hover {
+      color: #2563eb;
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    body.dark-mode .social-link:hover {
+      color: #60a5fa;
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+      50% { opacity: 1; transform: translateX(-50%) translateY(10px); }
+    }
+
+    .scroll-indicator a {
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+
+    body.dark-mode .scroll-indicator a {
+      color: #64748b;
+    }
+
+    /* Section Styles */
+    .section {
+      width: 100%;
+      padding: 4rem 1.5rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding: 6rem 2rem;
+      }
+    }
+
+    .section-bg {
+      background-color: #f8fafc;
+    }
+
+    body.dark-mode .section-bg {
+      background-color: #1e293b;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .section h2 {
+        font-size: 2.75rem;
+      }
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #6b7280;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    body.dark-mode .section-subtitle {
+      color: #cbd5e1;
+    }
+
+    /* Card Grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Cards */
+    .card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    body.dark-mode .card {
+      background: #1e293b;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
+    }
+
+    .card-icon {
+      width: 100%;
+      height: 150px;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 3rem;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0 0 0.75rem 0;
+      color: #1f2937;
+    }
+
+    body.dark-mode .card h3 {
+      color: #f1f5f9;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #6b7280;
+      line-height: 1.6;
+      margin: 0 0 1rem 0;
+    }
+
+    body.dark-mode .card p {
+      color: #cbd5e1;
+    }
+
+    /* Project Tags */
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: rgba(37, 99, 235, 0.1);
+      border: 1px solid #2563eb;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #2563eb;
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode .project-tag {
+      background: rgba(59, 130, 246, 0.2);
+      border-color: #60a5fa;
+      color: #93c5fd;
+    }
+
+    .project-tag:hover {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+    }
+
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      border: none;
+      border-radius: 50%;
+      color: white;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s ease;
-      z-index: 40;
+      z-index: 44;
       box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
     }
 
@@ -380,260 +858,254 @@
       box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
     }
 
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 1rem 0;
+    /* Mobile responsiveness */
+    @media (max-width: 640px) {
+      .profile-section {
+        margin: 1.5rem 0 2rem 0;
       }
 
-      .nav-link {
-        font-size: 0.875rem;
+      .cta-group {
+        margin: 1.5rem 0;
       }
 
-      .counter {
-        font-size: 2rem;
+      .section {
+        padding: 2rem 1rem;
       }
 
-      .profile-image {
-        width: 150px;
-        height: 150px;
+      .theme-toggle {
+        width: 55px;
+        height: 55px;
+        font-size: 1.25rem;
+        bottom: 20px;
+        right: 20px;
       }
 
       .back-to-top {
-        bottom: 20px;
-        right: 20px;
         width: 45px;
         height: 45px;
         font-size: 1rem;
+        bottom: 90px;
+        right: 20px;
       }
     }
 
-    @media (max-width: 640px) {
-      h1 {
-        font-size: 2rem !important;
-        line-height: 1.2;
-      }
-
-      h2 {
-        font-size: 1.875rem !important;
-      }
-
-      .counter {
-        font-size: 1.75rem;
-      }
-
-      .profile-image {
-        width: 140px;
-        height: 140px;
-      }
-    }
-
-    /* Ensure no overlaps */
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      width: 100%;
-    }
-
-    .section {
-      width: 100%;
-      clear: both;
-    }
-
-    /* "Let's Talk" Button */
-    .lets-talk-btn {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, #10b981, #06b6d4);
+    /* Skill Box */
+    .skill-box {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(37, 99, 235, 0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
       transition: all 0.3s ease;
+    }
+
+    body.dark-mode .skill-box {
+      background: rgba(30, 41, 59, 0.8);
+      border: 2px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .skill-box:hover {
+      border-color: #2563eb;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1);
+    }
+
+    body.dark-mode .skill-box:hover {
+      border-color: #60a5fa;
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+    }
+
+    .skill-box h3 {
+      font-size: 1.1rem;
       font-weight: 700;
-      padding: 0.75rem 1.5rem;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      color: white;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+      color: #1f2937;
     }
 
-    .lets-talk-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #06b6d4, #10b981);
-      transition: left 0.3s ease;
-      z-index: -1;
+    body.dark-mode .skill-box h3 {
+      color: #f1f5f9;
     }
 
-    .lets-talk-btn:hover::before {
-      left: 0;
+    .skill-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
-    .lets-talk-btn:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    body.dark-mode .skill-item {
+      color: #cbd5e1;
+    }
+
+    .skill-dot {
+      width: 6px;
+      height: 6px;
+      background: #2563eb;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    body.dark-mode .skill-dot {
+      background: #60a5fa;
+    }
+
+    /* Footer */
+    footer {
+      background: #1f2937;
+      color: #9ca3af;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid #374151;
+      transition: background 0.3s ease;
+    }
+
+    body.dark-mode footer {
+      background: #0f172a;
+      border-top-color: #1e293b;
+      color: #94a3b8;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: #f3f4f6;
+    }
+
+    body.dark-mode footer strong {
+      color: #cbd5e1;
     }
   </style>
 </head>
 
-<body class="bg-white text-gray-900">
+<body>
 
   <!-- Navigation Bar -->
   <nav class="navbar">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-      <div class="flex justify-between items-center gap-4">
-        <a href="#" class="text-xl sm:text-2xl font-bold gradient-text flex-shrink-0">Sam Shoni</a>
-        <div class="hidden md:flex space-x-6 lg:space-x-8">
-          <a href="#projects" class="nav-link">Projects</a>
-          <a href="#skills" class="nav-link">Skills</a>
-          <a href="#about" class="nav-link">About</a>
-          <a href="#contact" class="nav-link">Contact</a>
-        </div>
-        <div class="flex items-center gap-4">
-          <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
-            <i class="fas fa-moon"></i>
-          </button>
-          <div class="md:hidden">
-            <button class="text-gray-700 text-2xl hover:text-blue-600 transition">
-              <i class="fas fa-bars"></i>
-            </button>
-          </div>
-        </div>
+    <div class="navbar-content">
+      <div class="navbar-logo">Sam Shoni</div>
+      <div class="nav-links">
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </div>
+      <button class="hamburger" onclick="alert('Menu')">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-950 dark:via-blue-950 dark:to-purple-950 relative overflow-hidden pt-10 sm:pt-20 pb-10">
-    <!-- Background Elements -->
-    <div class="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 float"></div>
-    <div class="absolute -bottom-8 right-5 sm:right-10 w-48 sm:w-72 h-48 sm:h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 float" style="animation-delay: 2s;"></div>
+  <section class="hero">
+    <div class="hero-bg-blob-1"></div>
+    <div class="hero-bg-blob-2"></div>
 
-    <div class="hero-content fade-in max-w-4xl mx-auto">
-      <div class="mb-4 sm:mb-6">
-        <div class="inline-block">
-          <div class="flex items-center justify-center space-x-2 mb-3 sm:mb-4">
-            <span class="text-3xl sm:text-5xl">🤖</span>
-            <span class="text-3xl sm:text-5xl">⚙️</span>
-            <span class="text-3xl sm:text-5xl">🔧</span>
-          </div>
+    <div class="hero-content">
+      <!-- Emojis -->
+      <div class="emoji-group">
+        <span>🤖</span>
+        <span>⚙️</span>
+        <span>🔧</span>
+      </div>
+
+      <!-- Dynamic Name -->
+      <h1>Hi, I'm <span class="dynamic-name" data-text="Sam Shoni">Sam Shoni</span></h1>
+
+      <p class="hero-title">Robotics & Automation Engineer</p>
+
+      <!-- Profile Section: Image + About -->
+      <div class="profile-section">
+        <!-- Profile Image -->
+        <div class="profile-image-container">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCADIAMgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWm5ybnJ2eoqOkpaanqKmqsrO0tba2uLm6wsPExcbHyMnK0tPU1dbW2Nna4uPk5ebn6Onq8vP09fb2+Pn6/8QAHwEAAwEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlbaWmJmaoqOkpaanqKmqsrO0tba2uLm6wsPExcbHyMnK0tPU1dbW2Nna4uPk5ebn6Onq8vP09fb2+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k=" alt="Sam Shoni" class="profile-image">
+        </div>
+
+        <!-- About Box -->
+        <div class="about-box">
+          <p>I'm passionate about building <strong>intelligent robots</strong> and <strong>autonomous systems</strong>. With hands-on experience in <strong>ROS 2</strong>, <strong>computer vision</strong>, and <strong>embedded systems</strong>, I create innovative solutions that bridge hardware and software. Always learning, always building.</p>
         </div>
       </div>
 
-      <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold mb-3 sm:mb-4 leading-tight">
-        Hi, I'm <span class="gradient-text">Sam Shoni</span>
-      </h1>
-
-      <p class="text-lg sm:text-xl md:text-2xl mb-3 text-gray-700 dark:text-gray-300 font-semibold">
-        Robotics & Automation Engineer
-      </p>
-
-      <!-- Brief About Section -->
-      <div class="max-w-2xl mx-auto mb-8 sm:mb-10 bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-lg border border-blue-100 dark:border-blue-900">
-        <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed professional-text">
-          I'm passionate about building <strong>intelligent robots</strong> and <strong>autonomous systems</strong>. With hands-on experience in <strong>ROS 2</strong>, <strong>computer vision</strong>, and <strong>embedded systems</strong>, I create innovative solutions that bridge hardware and software. Always learning, always building.
-        </p>
-      </div>
-
-      <!-- Profile Image and Stats Row -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 mb-10 sm:mb-12 max-w-3xl mx-auto items-center">
-        <!-- Stats Left -->
-        <div class="space-y-4">
-          <div class="stat-box">
-            <div class="counter">40+</div>
-            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 sm:mt-2">GitHub Projects</p>
-          </div>
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-number">40+</div>
+          <div class="stat-label">GitHub Projects</div>
         </div>
-
-        <!-- Profile Image Center -->
-        <div class="flex justify-center">
-          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCADIAMgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWm5ybnJ2eoqOkpaanqKmqsrO0tba2uLm6wsPExcbHyMnK0tPU1dbW2Nna4uPk5ebn6Onq8vP09fb2+Pn6/8QAHwEAAwEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlbaWmJmaoqOkpaanqKmqsrO0tba2uLm6wsPExcbHyMnK0tPU1dbW2Nna4uPk5ebn6Onq8vP09fb2+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k=" alt="Sam Shoni" class="profile-image">
+        <div class="stat-box">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Completed</div>
         </div>
-
-        <!-- Stats Right -->
-        <div class="space-y-4">
-          <div class="stat-box">
-            <div class="counter">∞</div>
-            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 sm:mt-2">Learning</p>
-          </div>
+        <div class="stat-box">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Learning</div>
         </div>
       </div>
 
       <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 w-full sm:w-auto">
-        <a href="#projects" class="cta-button text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-lg w-full sm:w-auto">
-          <i class="fas fa-arrow-down mr-2"></i> View My Work
+      <div class="cta-group">
+        <a href="#projects" class="cta-button cta-primary">
+          <i class="fas fa-arrow-down"></i> View My Work
         </a>
-        <a href="https://github.com/samshoni" target="_blank" class="bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-gray-900 dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-lg transition-all w-full sm:w-auto">
-          <i class="fab fa-github mr-2"></i> GitHub
+        <a href="https://github.com/samshoni" target="_blank" class="cta-button cta-secondary">
+          <i class="fab fa-github"></i> GitHub Profile
         </a>
       </div>
 
       <!-- Let's Talk Button -->
-      <div class="mb-8">
+      <div style="margin: 1.5rem 0;">
         <a href="mailto:samshoni10@gmail.com" class="lets-talk-btn">
-          <i class="fas fa-comment-dots mr-2"></i> Let's Talk
+          <i class="fas fa-comment-dots"></i> Let's Talk
         </a>
       </div>
 
       <!-- Social Links -->
-      <div class="flex justify-center space-x-4 sm:space-x-6 text-xl sm:text-2xl">
-        <a href="https://github.com/samshoni" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition transform hover:scale-125">
+      <div class="social-links">
+        <a href="https://github.com/samshoni" target="_blank" class="social-link">
           <i class="fab fa-github"></i>
         </a>
-        <a href="https://www.linkedin.com/in/sam-shoni-7b2b94301" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition transform hover:scale-125">
+        <a href="https://www.linkedin.com/in/sam-shoni-7b2b94301" target="_blank" class="social-link">
           <i class="fab fa-linkedin"></i>
         </a>
-        <a href="mailto:samshoni10@gmail.com" class="text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition transform hover:scale-125">
+        <a href="mailto:samshoni10@gmail.com" class="social-link">
           <i class="fas fa-envelope"></i>
         </a>
       </div>
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-5 sm:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <a href="#projects" class="text-gray-400 hover:text-gray-600 dark:text-gray-600 dark:hover:text-gray-400">
-        <i class="fas fa-chevron-down text-2xl"></i>
+    <div class="scroll-indicator">
+      <a href="#projects">
+        <i class="fas fa-chevron-down"></i>
       </a>
     </div>
   </section>
 
-  <!-- Featured Projects Section -->
-  <section id="projects" class="section py-16 sm:py-20 md:py-24 section-bg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12 sm:mb-16">
-        <span class="inline-block px-3 sm:px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full text-xs sm:text-sm font-bold mb-3 sm:mb-4">FEATURED PROJECTS</span>
-        <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-white">
-          Recent Work & <span class="gradient-text">Innovations</span>
-        </h2>
-        <p class="text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto professional-text px-2">
-          Multiple projects showcasing expertise in autonomous systems and intelligent automation
-        </p>
-      </div>
+  <!-- Projects Section -->
+  <section id="projects" class="section section-bg">
+    <div class="section-container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
+      <h2>Featured <span class="dynamic-name" style="font-size: inherit;" data-text="Projects">Projects</span></h2>
+      <p class="section-subtitle">Multiple projects showcasing expertise in autonomous systems and intelligent automation</p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-
+      <div class="card-grid">
         <!-- Project 1 -->
-        <a href="https://github.com/samshoni/ros2-autonomous-docking" target="_blank" class="card-stagger block bg-white dark:bg-slate-800 rounded-2xl overflow-hidden glow-hover h-full flex flex-col">
-          <div class="bg-gradient-to-br from-blue-500 to-blue-600 h-40 sm:h-48 flex items-center justify-center relative overflow-hidden flex-shrink-0">
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-10 animate-pulse"></div>
-            <i class="fas fa-robot text-white text-4xl sm:text-6xl relative z-10"></i>
+        <a href="https://github.com/samshoni/ros2-autonomous-docking" target="_blank" class="card">
+          <div class="card-icon" style="background: linear-gradient(135deg, #2563eb, #3b82f6);">
+            <i class="fas fa-robot"></i>
           </div>
-          <div class="p-4 sm:p-6 flex-grow flex flex-col">
-            <div class="flex justify-between items-start mb-2 sm:mb-3">
-              <h3 class="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white flex-1">Autonomous Docking</h3>
-              <i class="fas fa-external-link-alt text-gray-400 text-xs sm:text-sm flex-shrink-0 ml-2"></i>
-            </div>
-            <p class="text-xs sm:text-base text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 professional-text flex-grow">
-              Mobile robot docking system with state machine control and precision navigation in ROS 2.
-            </p>
-            <div class="flex flex-wrap gap-1 sm:gap-2">
+          <div class="card-content">
+            <h3>Autonomous Docking System</h3>
+            <p>Mobile robot docking system with state machine control and precision navigation in ROS 2.</p>
+            <div class="project-tags">
               <span class="project-tag">ROS 2</span>
               <span class="project-tag">Python</span>
               <span class="project-tag">Gazebo</span>
@@ -642,20 +1114,14 @@
         </a>
 
         <!-- Project 2 -->
-        <a href="https://github.com/samshoni/Extended-Kalman-Filter-ros2-sensor-fusion" target="_blank" class="card-stagger block bg-white dark:bg-slate-800 rounded-2xl overflow-hidden glow-hover h-full flex flex-col">
-          <div class="bg-gradient-to-br from-purple-500 to-pink-600 h-40 sm:h-48 flex items-center justify-center relative overflow-hidden flex-shrink-0">
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-10 animate-pulse"></div>
-            <i class="fas fa-chart-line text-white text-4xl sm:text-6xl relative z-10"></i>
+        <a href="https://github.com/samshoni/Extended-Kalman-Filter-ros2-sensor-fusion" target="_blank" class="card">
+          <div class="card-icon" style="background: linear-gradient(135deg, #7c3aed, #a855f7);">
+            <i class="fas fa-chart-line"></i>
           </div>
-          <div class="p-4 sm:p-6 flex-grow flex flex-col">
-            <div class="flex justify-between items-start mb-2 sm:mb-3">
-              <h3 class="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white flex-1">Sensor Fusion & EKF</h3>
-              <i class="fas fa-external-link-alt text-gray-400 text-xs sm:text-sm flex-shrink-0 ml-2"></i>
-            </div>
-            <p class="text-xs sm:text-base text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 professional-text flex-grow">
-              Fusion of IMU and odometry data for accurate robot localization using Extended Kalman Filter.
-            </p>
-            <div class="flex flex-wrap gap-1 sm:gap-2">
+          <div class="card-content">
+            <h3>Sensor Fusion & EKF</h3>
+            <p>Fusion of IMU and odometry data for accurate robot localization using Extended Kalman Filter.</p>
+            <div class="project-tags">
               <span class="project-tag">ROS 2</span>
               <span class="project-tag">EKF</span>
               <span class="project-tag">C++</span>
@@ -664,321 +1130,194 @@
         </a>
 
         <!-- Project 3 -->
-        <a href="https://github.com/samshoni/Automated-6DOF-Robotic-Arm-with-GUI" target="_blank" class="card-stagger block bg-white dark:bg-slate-800 rounded-2xl overflow-hidden glow-hover h-full flex flex-col">
-          <div class="bg-gradient-to-br from-orange-500 to-red-600 h-40 sm:h-48 flex items-center justify-center relative overflow-hidden flex-shrink-0">
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-10 animate-pulse"></div>
-            <i class="fas fa-hand-fist text-white text-4xl sm:text-6xl relative z-10"></i>
+        <a href="https://github.com/samshoni/Automated-6DOF-Robotic-Arm-with-GUI" target="_blank" class="card">
+          <div class="card-icon" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">
+            <i class="fas fa-hand-fist"></i>
           </div>
-          <div class="p-4 sm:p-6 flex-grow flex flex-col">
-            <div class="flex justify-between items-start mb-2 sm:mb-3">
-              <h3 class="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white flex-1">6-DOF Robotic Arm</h3>
-              <i class="fas fa-external-link-alt text-gray-400 text-xs sm:text-sm flex-shrink-0 ml-2"></i>
-            </div>
-            <p class="text-xs sm:text-base text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 professional-text flex-grow">
-              6-DOF arm with Processing GUI for multi-servo control, automation sequences, and hardware integration.
-            </p>
-            <div class="flex flex-wrap gap-1 sm:gap-2">
+          <div class="card-content">
+            <h3>6-DOF Robotic Arm</h3>
+            <p>6-DOF arm with Processing GUI for multi-servo control, automation sequences, and hardware integration.</p>
+            <div class="project-tags">
               <span class="project-tag">Arduino</span>
               <span class="project-tag">Processing</span>
               <span class="project-tag">Servo</span>
             </div>
           </div>
         </a>
-
       </div>
 
-      <div class="text-center mt-10 sm:mt-12 md:mt-16">
-        <a href="https://github.com/samshoni" target="_blank" class="cta-button text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-lg">
-          <i class="fab fa-github mr-2"></i> Explore All 40+ Repositories
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="https://github.com/samshoni" target="_blank" class="cta-button cta-primary">
+          <i class="fab fa-github"></i> Explore All 40+ Repositories
         </a>
       </div>
     </div>
   </section>
 
   <!-- Skills Section -->
-  <section id="skills" class="section py-16 sm:py-20 md:py-24 bg-white dark:bg-slate-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12 sm:mb-16">
-        <span class="inline-block px-3 sm:px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 rounded-full text-xs sm:text-sm font-bold mb-3 sm:mb-4">TECHNICAL EXPERTISE</span>
-        <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-white">
-          Skills & <span class="gradient-text">Technologies</span>
-        </h2>
-        <p class="text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto professional-text px-2">
-          Hands-on experience with robotics, embedded systems, and intelligent automation
-        </p>
-      </div>
+  <section id="skills" class="section">
+    <div class="section-container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
+      <h2>Skills & <span class="dynamic-name" style="font-size: inherit;" data-text="Technologies">Technologies</span></h2>
+      <p class="section-subtitle">Hands-on experience with robotics, embedded systems, and intelligent automation</p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-
+      <div class="card-grid">
         <!-- ROS & Robotics -->
-        <div class="scroll-fade highlight-box">
-          <div class="text-4xl sm:text-5xl mb-3 sm:mb-4 text-blue-600 dark:text-blue-400"><i class="fas fa-robot"></i></div>
-          <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-white">ROS & Robotics</h3>
-          <div class="space-y-2 sm:space-y-3">
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">ROS 2 Humble</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">Gazebo Simulation</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">RVIZ</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">SLAM</span>
-            </div>
-          </div>
+        <div class="skill-box">
+          <h3><i class="fas fa-robot" style="color: #2563eb; margin-right: 0.5rem;"></i>ROS & Robotics</h3>
+          <ul class="skill-list">
+            <li class="skill-item"><span class="skill-dot"></span>ROS 2 Humble</li>
+            <li class="skill-item"><span class="skill-dot"></span>Gazebo Simulation</li>
+            <li class="skill-item"><span class="skill-dot"></span>RVIZ</li>
+            <li class="skill-item"><span class="skill-dot"></span>SLAM</li>
+          </ul>
         </div>
 
         <!-- Programming -->
-        <div class="scroll-fade highlight-box" style="animation-delay: 0.1s;">
-          <div class="text-4xl sm:text-5xl mb-3 sm:mb-4 text-purple-600 dark:text-purple-400"><i class="fas fa-code"></i></div>
-          <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-white">Programming</h3>
-          <div class="space-y-2 sm:space-y-3">
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-purple-600 dark:bg-purple-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">Python (Basics)</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-purple-600 dark:bg-purple-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">C++ (Basics + AI)</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-purple-600 dark:bg-purple-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">Arduino (with AI)</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-purple-600 dark:bg-purple-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">URDF/XML</span>
-            </div>
-          </div>
+        <div class="skill-box">
+          <h3><i class="fas fa-code" style="color: #7c3aed; margin-right: 0.5rem;"></i>Programming</h3>
+          <ul class="skill-list">
+            <li class="skill-item"><span class="skill-dot"></span>Python (Basics)</li>
+            <li class="skill-item"><span class="skill-dot"></span>C++ (Basics + AI)</li>
+            <li class="skill-item"><span class="skill-dot"></span>Arduino (with AI)</li>
+            <li class="skill-item"><span class="skill-dot"></span>URDF/XML</li>
+          </ul>
         </div>
 
-        <!-- Computer Vision & AI -->
-        <div class="scroll-fade highlight-box" style="animation-delay: 0.2s;">
-          <div class="text-4xl sm:text-5xl mb-3 sm:mb-4 text-orange-600 dark:text-orange-400"><i class="fas fa-eye"></i></div>
-          <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-white">Vision & AI</h3>
-          <div class="space-y-2 sm:space-y-3">
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-orange-600 dark:bg-orange-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">OpenCV</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-orange-600 dark:bg-orange-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">YOLOv8</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-orange-600 dark:bg-orange-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">Face Recognition</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-orange-600 dark:bg-orange-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">Image Processing</span>
-            </div>
-          </div>
+        <!-- Computer Vision -->
+        <div class="skill-box">
+          <h3><i class="fas fa-eye" style="color: #ec4899; margin-right: 0.5rem;"></i>Vision & AI</h3>
+          <ul class="skill-list">
+            <li class="skill-item"><span class="skill-dot"></span>OpenCV</li>
+            <li class="skill-item"><span class="skill-dot"></span>YOLOv8</li>
+            <li class="skill-item"><span class="skill-dot"></span>Face Recognition</li>
+            <li class="skill-item"><span class="skill-dot"></span>Image Processing</li>
+          </ul>
         </div>
 
-        <!-- Tools & Platforms -->
-        <div class="scroll-fade highlight-box" style="animation-delay: 0.3s;">
-          <div class="text-4xl sm:text-5xl mb-3 sm:mb-4 text-green-600 dark:text-green-400"><i class="fas fa-tools"></i></div>
-          <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-white">Tools & Platforms</h3>
-          <div class="space-y-2 sm:space-y-3">
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">GitHub & Git</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">VS Code</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">Linux/Ubuntu</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full flex-shrink-0"></span>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">Terminal/CLI</span>
-            </div>
-          </div>
+        <!-- Tools -->
+        <div class="skill-box">
+          <h3><i class="fas fa-tools" style="color: #10b981; margin-right: 0.5rem;"></i>Tools & Platforms</h3>
+          <ul class="skill-list">
+            <li class="skill-item"><span class="skill-dot"></span>GitHub & Git</li>
+            <li class="skill-item"><span class="skill-dot"></span>VS Code</li>
+            <li class="skill-item"><span class="skill-dot"></span>Linux/Ubuntu</li>
+            <li class="skill-item"><span class="skill-dot"></span>Terminal/CLI</li>
+          </ul>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section id="about" class="section py-16 sm:py-20 md:py-24 section-bg">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+  <section id="about" class="section section-bg">
+    <div class="section-container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
+      <h2>About <span class="dynamic-name" style="font-size: inherit;" data-text="Me">Me</span></h2>
+      <p class="section-subtitle">Passionate robotics engineer dedicated to continuous learning and innovation</p>
 
-        <!-- Left Content -->
-        <div>
-          <span class="inline-block px-3 sm:px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full text-xs sm:text-sm font-bold mb-4 sm:mb-6">ABOUT ME</span>
-          <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white leading-tight">
-            Passionate About <span class="gradient-text">Robotics Innovation</span>
-          </h2>
-          <p class="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 mb-3 sm:mb-4 leading-relaxed professional-text">
-            I'm a dedicated <strong>Robotics and Automation Engineer</strong> with strong foundations in autonomous systems, embedded systems, and intelligent robotics. I'm continuously learning and advancing my expertise in ROS 2 development and cutting-edge robotics technologies.
-          </p>
-          <p class="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 mb-3 sm:mb-4 leading-relaxed professional-text">
-            My expertise spans across <strong>ROS 2 architecture</strong>, <strong>computer vision systems</strong>, <strong>SLAM algorithms</strong>, and <strong>robotic arm kinematics</strong>. I specialize in designing and implementing autonomous solutions that solve real-world problems.
-          </p>
-          <p class="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 mb-6 sm:mb-8 leading-relaxed professional-text">
-            I've developed multiple projects showcasing robotics innovation - from autonomous mobile robots to computer vision systems. Each project represents my commitment to learning, building, and continuously improving my robotics engineering skills.
-          </p>
-          <a href="https://github.com/samshoni/samshoni/raw/main/Sam_Shoni_Resume.pdf"
-             class="cta-button text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-lg">
-            <i class="fas fa-download mr-2"></i> Download Resume
-          </a>
-        </div>
+      <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center;">
+        <div class="about-box" style="max-width: 900px; margin: 0 auto;">
+          <p><strong>I'm a dedicated Robotics and Automation Engineer</strong> with strong foundations in autonomous systems, embedded systems, and intelligent robotics. I'm continuously learning and advancing my expertise in ROS 2 development and cutting-edge robotics technologies.</p>
 
-        <!-- Right Content - Highlight Boxes -->
-        <div class="space-y-4 sm:space-y-6">
-          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">Key Strengths</h3>
-          
-          <div class="highlight-box">
-            <div class="flex items-start space-x-3 sm:space-x-4 gap-2">
-              <div class="text-2xl sm:text-3xl flex-shrink-0 text-blue-600 dark:text-blue-400"><i class="fas fa-code-branch"></i></div>
-              <div class="min-w-0">
-                <h4 class="font-bold text-gray-900 dark:text-white text-base sm:text-lg mb-1">40+ GitHub Repositories</h4>
-                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 professional-text">Portfolio of well-documented robotics projects and code</p>
-              </div>
-            </div>
-          </div>
+          <p style="margin-top: 1rem;">My expertise spans across <strong>ROS 2 architecture</strong>, <strong>computer vision systems</strong>, <strong>SLAM algorithms</strong>, and <strong>robotic arm kinematics</strong>. I specialize in designing and implementing autonomous solutions that solve real-world problems.</p>
 
-          <div class="highlight-box">
-            <div class="flex items-start space-x-3 sm:space-x-4 gap-2">
-              <div class="text-2xl sm:text-3xl flex-shrink-0 text-purple-600 dark:text-purple-400"><i class="fas fa-check-circle"></i></div>
-              <div class="min-w-0">
-                <h4 class="font-bold text-gray-900 dark:text-white text-base sm:text-lg mb-1">ROS 2 Expert Developer</h4>
-                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 professional-text">Deep expertise in ROS 2 Humble, Gazebo, and RVIZ</p>
-              </div>
-            </div>
-          </div>
+          <p style="margin-top: 1rem;">I've developed multiple projects showcasing robotics innovation - from autonomous mobile robots to computer vision systems. Each project represents my commitment to learning, building, and continuously improving my robotics engineering skills.</p>
 
-          <div class="highlight-box">
-            <div class="flex items-start space-x-3 sm:space-x-4 gap-2">
-              <div class="text-2xl sm:text-3xl flex-shrink-0 text-orange-600 dark:text-orange-400"><i class="fas fa-cogs"></i></div>
-              <div class="min-w-0">
-                <h4 class="font-bold text-gray-900 dark:text-white text-base sm:text-lg mb-1">Full-Stack Developer</h4>
-                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 professional-text">Hardware, firmware, and software integration expertise</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="highlight-box">
-            <div class="flex items-start space-x-3 sm:space-x-4 gap-2">
-              <div class="text-2xl sm:text-3xl flex-shrink-0 text-green-600 dark:text-green-400"><i class="fas fa-robot"></i></div>
-              <div class="min-w-0">
-                <h4 class="font-bold text-gray-900 dark:text-white text-base sm:text-lg mb-1">Computer Vision & AI</h4>
-                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 professional-text">OpenCV, YOLO, and advanced image processing</p>
-              </div>
-            </div>
+          <div style="margin-top: 1.5rem; text-align: center;">
+            <a href="https://github.com/samshoni/samshoni/raw/main/Sam_Shoni_Resume.pdf" class="cta-button cta-primary">
+              <i class="fas fa-download"></i> Download Resume
+            </a>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- Contact & CTA Section -->
-  <section id="contact" class="section py-16 sm:py-20 md:py-24 bg-gradient-to-br from-gray-900 to-gray-800 dark:from-slate-950 dark:to-slate-900">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 text-white leading-tight">
-        Let's Build Something <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Remarkable</span>
-      </h2>
-      <p class="text-sm sm:text-base md:text-lg text-gray-300 mb-8 sm:mb-10 max-w-2xl mx-auto professional-text">
-        Interested in discussing robotics projects, collaborations, or innovative automation solutions? Let's connect!
-      </p>
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="section-container" style="max-width: 900px; margin: 0 auto; padding: 0 1.5rem; text-align: center;">
+      <h2>Let's Build Something <span class="dynamic-name" style="font-size: inherit;" data-text="Remarkable">Remarkable</span></h2>
+      <p class="section-subtitle">Interested in discussing robotics projects, collaborations, or innovative automation solutions? Let's connect!</p>
 
-      <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 mb-10 sm:mb-12 w-full">
-        <a href="mailto:samshoni10@gmail.com" class="cta-button text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-lg w-full sm:w-auto">
-          <i class="fas fa-envelope mr-2"></i> Send Email
+      <div class="cta-group" style="max-width: 500px; margin: 2rem auto;">
+        <a href="mailto:samshoni10@gmail.com" class="cta-button cta-primary" style="flex: 1;">
+          <i class="fas fa-envelope"></i> Send Email
         </a>
-        <a href="https://www.linkedin.com/in/sam-shoni-7b2b94301" target="_blank" class="bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-lg transition-all w-full sm:w-auto">
-          <i class="fab fa-linkedin mr-2"></i> LinkedIn
+        <a href="https://www.linkedin.com/in/sam-shoni-7b2b94301" target="_blank" class="cta-button cta-primary" style="flex: 1;">
+          <i class="fab fa-linkedin"></i> LinkedIn
         </a>
       </div>
 
-      <!-- Social Links -->
-      <div class="flex justify-center space-x-6 sm:space-x-8 text-xl sm:text-2xl mb-6 sm:mb-8">
-        <a href="https://github.com/samshoni" target="_blank" class="text-gray-400 hover:text-white transition transform hover:scale-125">
+      <div class="social-links">
+        <a href="https://github.com/samshoni" target="_blank" class="social-link">
           <i class="fab fa-github"></i>
         </a>
-        <a href="https://www.linkedin.com/in/sam-shoni-7b2b94301" target="_blank" class="text-gray-400 hover:text-blue-400 transition transform hover:scale-125">
+        <a href="https://www.linkedin.com/in/sam-shoni-7b2b94301" target="_blank" class="social-link">
           <i class="fab fa-linkedin"></i>
         </a>
-        <a href="mailto:samshoni10@gmail.com" class="text-gray-400 hover:text-green-400 transition transform hover:scale-125">
+        <a href="mailto:samshoni10@gmail.com" class="social-link">
           <i class="fas fa-envelope"></i>
         </a>
       </div>
-
-      <div class="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-950 dark:bg-slate-950 text-gray-400 py-6 sm:py-8 border-t border-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
-        <div class="text-center sm:text-left">
-          <p class="font-semibold text-white mb-1 text-sm sm:text-base">Sam Shoni</p>
-          <p class="text-xs sm:text-sm professional-text">Robotics & Automation Engineer | ROS 2 Developer</p>
-        </div>
-        <p class="text-xs sm:text-sm mt-3 sm:mt-0 professional-text text-center sm:text-right">© 2025 Sam Shoni. All rights reserved.</p>
-      </div>
-    </div>
+  <footer>
+    <p><strong>Sam Shoni</strong></p>
+    <p>Robotics & Automation Engineer | ROS 2 Developer</p>
+    <p>© 2025 Sam Shoni. All rights reserved.</p>
   </footer>
 
+  <!-- Theme Toggle Button (Bottom Right) -->
+  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
   <!-- Back to Top Button -->
-  <div class="back-to-top" onclick="scrollToTop()" title="Back to Top">
+  <button class="back-to-top" onclick="scrollToTop()" title="Back to Top">
     <i class="fas fa-arrow-up"></i>
-  </div>
+  </button>
 
   <!-- Scripts -->
   <script>
     // Theme Toggle
     function toggleTheme() {
-      const html = document.documentElement;
-      const icon = document.querySelector('.theme-toggle i');
+      const body = document.body;
+      const btn = document.querySelector('.theme-toggle i');
       
-      if (html.classList.contains('dark-mode')) {
-        html.classList.remove('dark-mode');
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
+      if (body.classList.contains('dark-mode')) {
+        body.classList.remove('dark-mode');
+        btn.classList.remove('fa-sun');
+        btn.classList.add('fa-moon');
         localStorage.setItem('theme', 'light');
       } else {
-        html.classList.add('dark-mode');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
+        body.classList.add('dark-mode');
+        btn.classList.remove('fa-moon');
+        btn.classList.add('fa-sun');
         localStorage.setItem('theme', 'dark');
       }
     }
 
-    // Check for saved theme preference or default to light mode
+    // Load saved theme
     window.addEventListener('DOMContentLoaded', function() {
       const theme = localStorage.getItem('theme') || 'light';
-      const html = document.documentElement;
-      const icon = document.querySelector('.theme-toggle i');
+      const body = document.body;
+      const btn = document.querySelector('.theme-toggle i');
       
       if (theme === 'dark') {
-        html.classList.add('dark-mode');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
+        body.classList.add('dark-mode');
+        btn.classList.remove('fa-moon');
+        btn.classList.add('fa-sun');
       }
     });
 
-    // Back to Top functionality
+    // Back to Top
     window.addEventListener('scroll', function() {
-      const backToTopBtn = document.querySelector('.back-to-top');
+      const btn = document.querySelector('.back-to-top');
       if (window.pageYOffset > 300) {
-        backToTopBtn.classList.add('show');
+        btn.classList.add('show');
       } else {
-        backToTopBtn.classList.remove('show');
+        btn.classList.remove('show');
       }
     });
 
@@ -989,26 +1328,7 @@
       });
     }
 
-    // Intersection Observer for scroll animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.scroll-fade').forEach(el => {
-      observer.observe(el);
-    });
-
-    // Smooth scroll behavior
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -1019,16 +1339,18 @@
       });
     });
 
-    // Counter animation
-    function animateCounter(element, target, duration = 2000) {
+    // Stat counter animation
+    function animateCounter(element, target) {
       let start = 0;
-      const increment = target / (duration / 16);
+      const increment = target / 60;
       
       const timer = setInterval(() => {
         start += increment;
         if (start >= target) {
           if (target === 40) {
             element.textContent = '40+';
+          } else if (target === 10) {
+            element.textContent = '10+';
           } else {
             element.textContent = target;
           }
@@ -1039,26 +1361,23 @@
       }, 16);
     }
 
-    // Trigger counter animation when section is visible
-    const statsObserver = new IntersectionObserver(function(entries) {
+    // Trigger animations when visible
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !entry.target.hasAttribute('data-animated')) {
           entry.target.setAttribute('data-animated', 'true');
-          document.querySelectorAll('.counter').forEach((counter, index) => {
-            if (index === 0) {
-              animateCounter(counter, 40);
-            } else {
-              animateCounter(counter, 999, 1000);
-            }
+          const statNumbers = entry.target.querySelectorAll('.stat-number');
+          statNumbers.forEach((num, idx) => {
+            if (idx === 0) animateCounter(num, 40);
+            else if (idx === 1) animateCounter(num, 10);
+            else animateCounter(num, 999);
           });
-          statsObserver.unobserve(entry.target);
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.5 });
 
-    document.querySelectorAll('.stat-box').forEach(box => {
-      statsObserver.observe(box);
-    });
+    document.querySelectorAll('.stats-grid').forEach(el => observer.observe(el));
   </script>
 
 </body>
