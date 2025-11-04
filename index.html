@@ -12,7 +12,8 @@
       scroll-behavior: smooth;
     }
 
-    body {
+    html, body {
+      width: 100%;
       overflow-x: hidden;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
@@ -66,9 +67,6 @@
     .card-stagger:nth-child(1) { animation-delay: 0.1s; }
     .card-stagger:nth-child(2) { animation-delay: 0.2s; }
     .card-stagger:nth-child(3) { animation-delay: 0.3s; }
-    .card-stagger:nth-child(4) { animation-delay: 0.4s; }
-    .card-stagger:nth-child(5) { animation-delay: 0.5s; }
-    .card-stagger:nth-child(6) { animation-delay: 0.6s; }
 
     /* Hover Glow Effect */
     .glow-hover {
@@ -133,6 +131,7 @@
       transition: color 0.3s ease;
       font-weight: 500;
       color: #4a5568;
+      white-space: nowrap;
     }
 
     .nav-link::after {
@@ -154,30 +153,11 @@
       color: #667eea;
     }
 
-    /* Tech Stack Grid */
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 1rem;
-    }
-
-    /* Scroll Animation */
-    .scroll-fade {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
-    }
-
-    .scroll-fade.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     /* Project Tag */
     .project-tag {
       display: inline-block;
       padding: 0.25rem 0.75rem;
-      margin: 0.25rem;
+      margin: 0.25rem 0.25rem 0.25rem 0;
       background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
       border: 1px solid #667eea;
       border-radius: 20px;
@@ -200,6 +180,8 @@
       background: linear-gradient(135deg, #667eea, #764ba2);
       transition: all 0.3s ease;
       font-weight: 600;
+      display: inline-block;
+      text-align: center;
     }
 
     .cta-button::before {
@@ -230,6 +212,7 @@
       border-radius: 1rem;
       padding: 1.5rem;
       border: 1px solid rgba(102, 126, 234, 0.1);
+      width: 100%;
     }
 
     .stat-box:hover {
@@ -248,20 +231,14 @@
       transition: color 0.3s ease;
     }
 
-    /* Professional Section Divider */
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #667eea, transparent);
-      margin: 3rem 0;
-    }
-
     /* Highlight Box */
     .highlight-box {
       background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
       border: 2px solid rgba(102, 126, 234, 0.2);
       border-radius: 1.5rem;
-      padding: 2rem;
+      padding: 1.5rem;
       transition: all 0.3s ease;
+      width: 100%;
     }
 
     .highlight-box:hover {
@@ -269,20 +246,15 @@
       box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
     }
 
-    /* Responsive Timeline */
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 1rem 0;
-      }
-
-      .nav-link {
-        font-size: 0.875rem;
-      }
+    .highlight-box h4 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
     }
 
-    /* Smooth Transitions */
-    a {
-      transition: all 0.3s ease;
+    .highlight-box p {
+      font-size: 0.875rem;
+      line-height: 1.6;
     }
 
     /* Section Background Enhancement */
@@ -295,6 +267,73 @@
       letter-spacing: 0.5px;
       line-height: 1.8;
     }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem 0;
+      }
+
+      .nav-link {
+        font-size: 0.875rem;
+      }
+
+      .counter {
+        font-size: 2rem;
+      }
+
+      .stat-box {
+        padding: 1.25rem;
+      }
+
+      .highlight-box {
+        padding: 1.25rem;
+      }
+
+      .project-card-content {
+        min-height: auto;
+      }
+
+      .skill-icon {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 2rem !important;
+        line-height: 1.2;
+      }
+
+      h2 {
+        font-size: 1.875rem !important;
+      }
+
+      .counter {
+        font-size: 1.75rem;
+      }
+
+      .stat-box {
+        padding: 1rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+      }
+    }
+
+    /* Ensure no overlaps */
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+    }
+
+    .section {
+      width: 100%;
+      clear: both;
+    }
   </style>
 </head>
 
@@ -302,10 +341,10 @@
 
   <!-- Navigation Bar -->
   <nav class="navbar">
-    <div class="max-w-7xl mx-auto px-6 py-4">
-      <div class="flex justify-between items-center">
-        <a href="#" class="text-2xl font-bold gradient-text">Sam Shoni</a>
-        <div class="hidden md:flex space-x-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+      <div class="flex justify-between items-center gap-4">
+        <a href="#" class="text-xl sm:text-2xl font-bold gradient-text flex-shrink-0">Sam Shoni</a>
+        <div class="hidden md:flex space-x-6 lg:space-x-8">
           <a href="#projects" class="nav-link">Projects</a>
           <a href="#skills" class="nav-link">Skills</a>
           <a href="#about" class="nav-link">About</a>
@@ -321,62 +360,62 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 relative overflow-hidden pt-20">
+  <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 relative overflow-hidden pt-10 sm:pt-20 pb-10">
     <!-- Background Elements -->
-    <div class="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 float"></div>
-    <div class="absolute -bottom-8 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 float" style="animation-delay: 2s;"></div>
+    <div class="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 float"></div>
+    <div class="absolute -bottom-8 right-5 sm:right-10 w-48 sm:w-72 h-48 sm:h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 float" style="animation-delay: 2s;"></div>
 
-    <div class="relative z-10 fade-in max-w-4xl">
-      <div class="mb-6">
+    <div class="hero-content fade-in max-w-4xl mx-auto">
+      <div class="mb-4 sm:mb-6">
         <div class="inline-block">
-          <div class="flex items-center justify-center space-x-2 mb-4">
-            <span class="text-5xl">🤖</span>
-            <span class="text-5xl">⚙️</span>
-            <span class="text-5xl">🔧</span>
+          <div class="flex items-center justify-center space-x-2 mb-3 sm:mb-4">
+            <span class="text-3xl sm:text-5xl">🤖</span>
+            <span class="text-3xl sm:text-5xl">⚙️</span>
+            <span class="text-3xl sm:text-5xl">🔧</span>
           </div>
         </div>
       </div>
 
-      <h1 class="text-6xl md:text-7xl font-extrabold mb-4 leading-tight">
+      <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold mb-3 sm:mb-4 leading-tight">
         Hi, I'm <span class="gradient-text">Sam Shoni</span>
       </h1>
 
-      <p class="text-2xl md:text-3xl max-w-3xl mb-2 text-gray-800 font-semibold">
+      <p class="text-lg sm:text-xl md:text-2xl mb-2 text-gray-800 font-semibold">
         Robotics & Automation Engineer
       </p>
 
-      <p class="text-lg md:text-xl max-w-3xl mb-10 text-gray-700 leading-relaxed professional-text">
+      <p class="text-base sm:text-lg md:text-xl max-w-3xl mb-8 sm:mb-10 text-gray-700 leading-relaxed professional-text mx-auto">
         Specializing in <strong>ROS 2 Development</strong>, <strong>Autonomous Systems</strong>, and <strong>Computer Vision</strong>. I design and build intelligent robots and automation solutions that create real-world impact.
       </p>
 
       <!-- Stats -->
-      <div class="grid grid-cols-3 gap-6 mb-12 max-w-2xl mx-auto">
-        <div class="stat-box">
-          <div class="counter">2-3</div>
-          <p class="text-sm text-gray-600 mt-2">Major Projects</p>
-        </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 mb-10 sm:mb-12 max-w-2xl mx-auto">
         <div class="stat-box">
           <div class="counter">40+</div>
-          <p class="text-sm text-gray-600 mt-2">GitHub Repositories</p>
+          <p class="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2">GitHub Projects</p>
         </div>
         <div class="stat-box">
-          <div class="counter">2+</div>
-          <p class="text-sm text-gray-600 mt-2">Years Experience</p>
+          <div class="counter">10+</div>
+          <p class="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2">Small Projects</p>
+        </div>
+        <div class="stat-box">
+          <div class="counter">∞</div>
+          <p class="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2">Learning</p>
         </div>
       </div>
 
       <!-- CTA Buttons -->
-      <div class="flex flex-col md:flex-row justify-center gap-4 mb-10">
-        <a href="#projects" class="cta-button text-white px-8 py-4 rounded-full font-semibold text-lg inline-block text-center">
+      <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 w-full sm:w-auto">
+        <a href="#projects" class="cta-button text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-lg w-full sm:w-auto">
           <i class="fas fa-arrow-down mr-2"></i> View My Work
         </a>
-        <a href="https://github.com/samshoni" target="_blank" class="bg-gray-200 hover:bg-gray-300 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg transition-all inline-block text-center">
-          <i class="fab fa-github mr-2"></i> GitHub Profile
+        <a href="https://github.com/samshoni" target="_blank" class="bg-gray-200 hover:bg-gray-300 text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-lg transition-all w-full sm:w-auto">
+          <i class="fab fa-github mr-2"></i> GitHub
         </a>
       </div>
 
       <!-- Social Links -->
-      <div class="flex justify-center space-x-6 text-2xl">
+      <div class="flex justify-center space-x-4 sm:space-x-6 text-xl sm:text-2xl">
         <a href="https://github.com/samshoni" target="_blank" class="text-gray-600 hover:text-blue-600 transition transform hover:scale-125">
           <i class="fab fa-github"></i>
         </a>
@@ -390,7 +429,7 @@
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <div class="absolute bottom-5 sm:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
       <a href="#projects" class="text-gray-400 hover:text-gray-600">
         <i class="fas fa-chevron-down text-2xl"></i>
       </a>
@@ -398,33 +437,35 @@
   </section>
 
   <!-- Featured Projects Section -->
-  <section id="projects" class="py-24 section-bg">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <span class="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-bold mb-4">FEATURED PROJECTS</span>
-        <h2 class="text-5xl font-bold mb-4 text-gray-900">
-          Recent Work & <span class="gradient-text">Case Studies</span>
+  <section id="projects" class="section py-16 sm:py-20 md:py-24 section-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12 sm:mb-16">
+        <span class="inline-block px-3 sm:px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-xs sm:text-sm font-bold mb-3 sm:mb-4">FEATURED PROJECTS</span>
+        <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4 text-gray-900">
+          Recent Work & <span class="gradient-text">Innovations</span>
         </h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto professional-text">
-          Cutting-edge robotics solutions demonstrating expertise in autonomous systems and intelligent automation
+        <p class="text-sm sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto professional-text px-2">
+          Multiple projects showcasing expertise in autonomous systems and intelligent automation
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
 
         <!-- Project 1 -->
-        <a href="https://github.com/samshoni/ros2-autonomous-docking" target="_blank" class="card-stagger block bg-white rounded-2xl overflow-hidden glow-hover h-full">
-          <div class="bg-gradient-to-br from-blue-500 to-blue-600 h-48 flex items-center justify-center relative overflow-hidden">
+        <a href="https://github.com/samshoni/ros2-autonomous-docking" target="_blank" class="card-stagger block bg-white rounded-2xl overflow-hidden glow-hover h-full flex flex-col">
+          <div class="bg-gradient-to-br from-blue-500 to-blue-600 h-40 sm:h-48 flex items-center justify-center relative overflow-hidden flex-shrink-0">
             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-10 animate-pulse"></div>
-            <i class="fas fa-robot text-white text-6xl relative z-10"></i>
+            <i class="fas fa-robot text-white text-4xl sm:text-6xl relative z-10"></i>
           </div>
-          <div class="p-6">
-            <div class="flex justify-between items-start mb-3">
-              <h3 class="text-2xl font-bold text-gray-900 flex-1">Autonomous Docking System</h3>
-              <i class="fas fa-external-link-alt text-gray-400 text-sm"></i>
+          <div class="p-4 sm:p-6 flex-grow flex flex-col">
+            <div class="flex justify-between items-start mb-2 sm:mb-3">
+              <h3 class="text-lg sm:text-2xl font-bold text-gray-900 flex-1">Autonomous Docking</h3>
+              <i class="fas fa-external-link-alt text-gray-400 text-xs sm:text-sm flex-shrink-0 ml-2"></i>
             </div>
-            <p class="text-gray-600 mb-4 professional-text">Autonomous docking for mobile robots with state machine control, precision navigation, and battery management in ROS 2 Humble.</p>
-            <div>
+            <p class="text-xs sm:text-base text-gray-600 mb-3 sm:mb-4 professional-text flex-grow">
+              Mobile robot docking system with state machine control and precision navigation in ROS 2.
+            </p>
+            <div class="flex flex-wrap gap-1 sm:gap-2">
               <span class="project-tag">ROS 2</span>
               <span class="project-tag">Python</span>
               <span class="project-tag">Gazebo</span>
@@ -433,18 +474,20 @@
         </a>
 
         <!-- Project 2 -->
-        <a href="https://github.com/samshoni/Extended-Kalman-Filter-ros2-sensor-fusion" target="_blank" class="card-stagger block bg-white rounded-2xl overflow-hidden glow-hover h-full">
-          <div class="bg-gradient-to-br from-purple-500 to-pink-600 h-48 flex items-center justify-center relative overflow-hidden">
+        <a href="https://github.com/samshoni/Extended-Kalman-Filter-ros2-sensor-fusion" target="_blank" class="card-stagger block bg-white rounded-2xl overflow-hidden glow-hover h-full flex flex-col">
+          <div class="bg-gradient-to-br from-purple-500 to-pink-600 h-40 sm:h-48 flex items-center justify-center relative overflow-hidden flex-shrink-0">
             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-10 animate-pulse"></div>
-            <i class="fas fa-chart-line text-white text-6xl relative z-10"></i>
+            <i class="fas fa-chart-line text-white text-4xl sm:text-6xl relative z-10"></i>
           </div>
-          <div class="p-6">
-            <div class="flex justify-between items-start mb-3">
-              <h3 class="text-2xl font-bold text-gray-900 flex-1">Sensor Fusion & Localization</h3>
-              <i class="fas fa-external-link-alt text-gray-400 text-sm"></i>
+          <div class="p-4 sm:p-6 flex-grow flex flex-col">
+            <div class="flex justify-between items-start mb-2 sm:mb-3">
+              <h3 class="text-lg sm:text-2xl font-bold text-gray-900 flex-1">Sensor Fusion & EKF</h3>
+              <i class="fas fa-external-link-alt text-gray-400 text-xs sm:text-sm flex-shrink-0 ml-2"></i>
             </div>
-            <p class="text-gray-600 mb-4 professional-text">Fusing IMU and odometry data for accurate robot localization using Extended Kalman Filter in ROS 2 Humble.</p>
-            <div>
+            <p class="text-xs sm:text-base text-gray-600 mb-3 sm:mb-4 professional-text flex-grow">
+              Fusion of IMU and odometry data for accurate robot localization using Extended Kalman Filter.
+            </p>
+            <div class="flex flex-wrap gap-1 sm:gap-2">
               <span class="project-tag">ROS 2</span>
               <span class="project-tag">EKF</span>
               <span class="project-tag">C++</span>
@@ -453,29 +496,31 @@
         </a>
 
         <!-- Project 3 -->
-        <a href="https://github.com/samshoni/Automated-6DOF-Robotic-Arm-with-GUI" target="_blank" class="card-stagger block bg-white rounded-2xl overflow-hidden glow-hover h-full">
-          <div class="bg-gradient-to-br from-orange-500 to-red-600 h-48 flex items-center justify-center relative overflow-hidden">
+        <a href="https://github.com/samshoni/Automated-6DOF-Robotic-Arm-with-GUI" target="_blank" class="card-stagger block bg-white rounded-2xl overflow-hidden glow-hover h-full flex flex-col">
+          <div class="bg-gradient-to-br from-orange-500 to-red-600 h-40 sm:h-48 flex items-center justify-center relative overflow-hidden flex-shrink-0">
             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-10 animate-pulse"></div>
-            <i class="fas fa-hand-fist text-white text-6xl relative z-10"></i>
+            <i class="fas fa-hand-fist text-white text-4xl sm:text-6xl relative z-10"></i>
           </div>
-          <div class="p-6">
-            <div class="flex justify-between items-start mb-3">
-              <h3 class="text-2xl font-bold text-gray-900 flex-1">6-DOF Robotic Arm</h3>
-              <i class="fas fa-external-link-alt text-gray-400 text-sm"></i>
+          <div class="p-4 sm:p-6 flex-grow flex flex-col">
+            <div class="flex justify-between items-start mb-2 sm:mb-3">
+              <h3 class="text-lg sm:text-2xl font-bold text-gray-900 flex-1">6-DOF Robotic Arm</h3>
+              <i class="fas fa-external-link-alt text-gray-400 text-xs sm:text-sm flex-shrink-0 ml-2"></i>
             </div>
-            <p class="text-gray-600 mb-4 professional-text">6-DOF robotic arm with custom Processing GUI for multi-servo control, automation sequences, and hardware integration.</p>
-            <div>
+            <p class="text-xs sm:text-base text-gray-600 mb-3 sm:mb-4 professional-text flex-grow">
+              6-DOF arm with Processing GUI for multi-servo control, automation sequences, and hardware integration.
+            </p>
+            <div class="flex flex-wrap gap-1 sm:gap-2">
               <span class="project-tag">Arduino</span>
               <span class="project-tag">Processing</span>
-              <span class="project-tag">Servo Control</span>
+              <span class="project-tag">Servo</span>
             </div>
           </div>
         </a>
 
       </div>
 
-      <div class="text-center mt-16">
-        <a href="https://github.com/samshoni" target="_blank" class="cta-button text-white px-8 py-4 rounded-full font-semibold text-lg inline-block">
+      <div class="text-center mt-10 sm:mt-12 md:mt-16">
+        <a href="https://github.com/samshoni" target="_blank" class="cta-button text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-lg">
           <i class="fab fa-github mr-2"></i> Explore All 40+ Repositories
         </a>
       </div>
@@ -483,112 +528,112 @@
   </section>
 
   <!-- Skills Section -->
-  <section id="skills" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <span class="inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-bold mb-4">TECHNICAL EXPERTISE</span>
-        <h2 class="text-5xl font-bold mb-4 text-gray-900">
+  <section id="skills" class="section py-16 sm:py-20 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12 sm:mb-16">
+        <span class="inline-block px-3 sm:px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-xs sm:text-sm font-bold mb-3 sm:mb-4">TECHNICAL EXPERTISE</span>
+        <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4 text-gray-900">
           Skills & <span class="gradient-text">Technologies</span>
         </h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto professional-text">
-          Comprehensive skill set covering robotics, embedded systems, and intelligent automation
+        <p class="text-sm sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto professional-text px-2">
+          Hands-on experience with robotics, embedded systems, and intelligent automation
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
 
         <!-- ROS & Robotics -->
         <div class="scroll-fade highlight-box">
-          <div class="text-5xl mb-4 text-blue-600"><i class="fas fa-robot"></i></div>
-          <h3 class="text-xl font-bold mb-4 text-gray-900">ROS & Robotics</h3>
-          <div class="space-y-3">
+          <div class="skill-icon text-4xl sm:text-5xl mb-3 sm:mb-4 text-blue-600"><i class="fas fa-robot"></i></div>
+          <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">ROS & Robotics</h3>
+          <div class="space-y-2 sm:space-y-3">
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">ROS 2 Humble</span>
+              <span class="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">ROS 2 Humble</span>
             </div>
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">Gazebo Simulation</span>
+              <span class="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">Gazebo Simulation</span>
             </div>
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">RVIZ Visualization</span>
+              <span class="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">RVIZ</span>
             </div>
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">SLAM Algorithms</span>
+              <span class="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">SLAM</span>
             </div>
           </div>
         </div>
 
         <!-- Programming -->
         <div class="scroll-fade highlight-box" style="animation-delay: 0.1s;">
-          <div class="text-5xl mb-4 text-purple-600"><i class="fas fa-code"></i></div>
-          <h3 class="text-xl font-bold mb-4 text-gray-900">Programming</h3>
-          <div class="space-y-3">
+          <div class="skill-icon text-4xl sm:text-5xl mb-3 sm:mb-4 text-purple-600"><i class="fas fa-code"></i></div>
+          <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Programming</h3>
+          <div class="space-y-2 sm:space-y-3">
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-purple-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">Python 3.x</span>
+              <span class="w-2 h-2 bg-purple-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">Python (Basics)</span>
             </div>
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-purple-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">C++ 17/20</span>
+              <span class="w-2 h-2 bg-purple-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">C++ (Basics + AI)</span>
             </div>
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-purple-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">Arduino/Embedded C</span>
+              <span class="w-2 h-2 bg-purple-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">Arduino (with AI)</span>
             </div>
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-purple-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">URDF/XML</span>
+              <span class="w-2 h-2 bg-purple-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">URDF/XML</span>
             </div>
           </div>
         </div>
 
         <!-- Computer Vision & AI -->
         <div class="scroll-fade highlight-box" style="animation-delay: 0.2s;">
-          <div class="text-5xl mb-4 text-orange-600"><i class="fas fa-eye"></i></div>
-          <h3 class="text-xl font-bold mb-4 text-gray-900">Vision & AI</h3>
-          <div class="space-y-3">
+          <div class="skill-icon text-4xl sm:text-5xl mb-3 sm:mb-4 text-orange-600"><i class="fas fa-eye"></i></div>
+          <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Vision & AI</h3>
+          <div class="space-y-2 sm:space-y-3">
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-orange-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">OpenCV</span>
+              <span class="w-2 h-2 bg-orange-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">OpenCV</span>
             </div>
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-orange-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">YOLOv8</span>
+              <span class="w-2 h-2 bg-orange-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">YOLOv8</span>
             </div>
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-orange-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">Face Recognition</span>
+              <span class="w-2 h-2 bg-orange-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">Face Recognition</span>
             </div>
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-orange-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">Deep Learning</span>
+              <span class="w-2 h-2 bg-orange-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">Image Processing</span>
             </div>
           </div>
         </div>
 
         <!-- Tools & Platforms -->
         <div class="scroll-fade highlight-box" style="animation-delay: 0.3s;">
-          <div class="text-5xl mb-4 text-green-600"><i class="fas fa-tools"></i></div>
-          <h3 class="text-xl font-bold mb-4 text-gray-900">Tools & Platforms</h3>
-          <div class="space-y-3">
+          <div class="skill-icon text-4xl sm:text-5xl mb-3 sm:mb-4 text-green-600"><i class="fas fa-tools"></i></div>
+          <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Tools & Platforms</h3>
+          <div class="space-y-2 sm:space-y-3">
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-green-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">GitHub & Git</span>
+              <span class="w-2 h-2 bg-green-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">GitHub & Git</span>
             </div>
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-green-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">Docker</span>
+              <span class="w-2 h-2 bg-green-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">VS Code</span>
             </div>
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-green-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">Linux/Ubuntu</span>
+              <span class="w-2 h-2 bg-green-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">Linux/Ubuntu</span>
             </div>
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 bg-green-600 rounded-full"></span>
-              <span class="text-sm font-semibold text-gray-700">VS Code</span>
+              <span class="w-2 h-2 bg-green-600 rounded-full flex-shrink-0"></span>
+              <span class="text-xs sm:text-sm font-semibold text-gray-700">Terminal/CLI</span>
             </div>
           </div>
         </div>
@@ -598,71 +643,71 @@
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-24 section-bg">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+  <section id="about" class="section py-16 sm:py-20 md:py-24 section-bg">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
 
         <!-- Left Content -->
         <div>
-          <span class="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-bold mb-6">ABOUT ME</span>
-          <h2 class="text-5xl font-bold mb-6 text-gray-900">
+          <span class="inline-block px-3 sm:px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-xs sm:text-sm font-bold mb-4 sm:mb-6">ABOUT ME</span>
+          <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 leading-tight">
             Passionate About <span class="gradient-text">Robotics Innovation</span>
           </h2>
-          <p class="text-lg text-gray-700 mb-4 leading-relaxed professional-text">
-            I'm a dedicated <strong>Robotics and Automation Engineer</strong> with a strong foundation in autonomous systems, embedded systems, and intelligent robotics. Currently focused on advancing expertise in ROS 2 development and cutting-edge robotics technologies.
+          <p class="text-sm sm:text-base md:text-lg text-gray-700 mb-3 sm:mb-4 leading-relaxed professional-text">
+            I'm a dedicated <strong>Robotics and Automation Engineer</strong> with strong foundations in autonomous systems, embedded systems, and intelligent robotics. I'm continuously learning and advancing my expertise in ROS 2 development and cutting-edge robotics technologies.
           </p>
-          <p class="text-lg text-gray-700 mb-4 leading-relaxed professional-text">
-            My expertise spans across <strong>ROS 2 architecture</strong>, <strong>computer vision systems</strong>, <strong>SLAM algorithms</strong>, and <strong>robotic arm kinematics</strong>. I specialize in designing and implementing autonomous solutions that solve real-world problems with precision and innovation.
+          <p class="text-sm sm:text-base md:text-lg text-gray-700 mb-3 sm:mb-4 leading-relaxed professional-text">
+            My expertise spans across <strong>ROS 2 architecture</strong>, <strong>computer vision systems</strong>, <strong>SLAM algorithms</strong>, and <strong>robotic arm kinematics</strong>. I specialize in designing and implementing autonomous solutions that solve real-world problems.
           </p>
-          <p class="text-lg text-gray-700 mb-8 leading-relaxed professional-text">
-            From building sophisticated mobile robots to developing AI-powered automation systems, I'm committed to pushing the boundaries of what's possible in robotics and creating impactful technological solutions.
+          <p class="text-sm sm:text-base md:text-lg text-gray-700 mb-6 sm:mb-8 leading-relaxed professional-text">
+            I've developed multiple projects showcasing robotics innovation - from autonomous mobile robots to computer vision systems. Each project represents my commitment to learning, building, and continuously improving my robotics engineering skills.
           </p>
           <a href="https://github.com/samshoni/samshoni/raw/main/Sam_Shoni_Resume.pdf"
-             class="cta-button text-white px-8 py-4 rounded-full font-semibold inline-block">
-            <i class="fas fa-download mr-2"></i> Download Resume (PDF)
+             class="cta-button text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-lg">
+            <i class="fas fa-download mr-2"></i> Download Resume
           </a>
         </div>
 
         <!-- Right Content - Highlight Boxes -->
-        <div class="space-y-6">
-          <h3 class="text-2xl font-bold text-gray-900 mb-6">Key Achievements</h3>
+        <div class="space-y-4 sm:space-y-6">
+          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Key Strengths</h3>
           
           <div class="highlight-box">
-            <div class="flex items-start space-x-4">
-              <div class="text-blue-600 text-3xl flex-shrink-0"><i class="fas fa-code-branch"></i></div>
-              <div>
-                <h4 class="font-bold text-gray-900 text-lg mb-1">40+ GitHub Repositories</h4>
-                <p class="text-gray-600 text-sm professional-text">Comprehensive portfolio of well-documented robotics projects and code repositories</p>
+            <div class="flex items-start space-x-3 sm:space-x-4 gap-2">
+              <div class="text-2xl sm:text-3xl flex-shrink-0 text-blue-600"><i class="fas fa-code-branch"></i></div>
+              <div class="min-w-0">
+                <h4 class="font-bold text-gray-900 text-base sm:text-lg mb-1">40+ GitHub Repositories</h4>
+                <p class="text-xs sm:text-sm text-gray-600 professional-text">Portfolio of well-documented robotics projects and code</p>
               </div>
             </div>
           </div>
 
           <div class="highlight-box">
-            <div class="flex items-start space-x-4">
-              <div class="text-purple-600 text-3xl flex-shrink-0"><i class="fas fa-check-circle"></i></div>
-              <div>
-                <h4 class="font-bold text-gray-900 text-lg mb-1">ROS 2 Expert Developer</h4>
-                <p class="text-gray-600 text-sm professional-text">Deep expertise in ROS 2 Humble, Gazebo simulation, and RVIZ visualization</p>
+            <div class="flex items-start space-x-3 sm:space-x-4 gap-2">
+              <div class="text-2xl sm:text-3xl flex-shrink-0 text-purple-600"><i class="fas fa-check-circle"></i></div>
+              <div class="min-w-0">
+                <h4 class="font-bold text-gray-900 text-base sm:text-lg mb-1">ROS 2 Expert Developer</h4>
+                <p class="text-xs sm:text-sm text-gray-600 professional-text">Deep expertise in ROS 2 Humble, Gazebo, and RVIZ</p>
               </div>
             </div>
           </div>
 
           <div class="highlight-box">
-            <div class="flex items-start space-x-4">
-              <div class="text-orange-600 text-3xl flex-shrink-0"><i class="fas fa-cogs"></i></div>
-              <div>
-                <h4 class="font-bold text-gray-900 text-lg mb-1">Full-Stack Robotics Developer</h4>
-                <p class="text-gray-600 text-sm professional-text">Hardware integration, firmware development, and software architecture expertise</p>
+            <div class="flex items-start space-x-3 sm:space-x-4 gap-2">
+              <div class="text-2xl sm:text-3xl flex-shrink-0 text-orange-600"><i class="fas fa-cogs"></i></div>
+              <div class="min-w-0">
+                <h4 class="font-bold text-gray-900 text-base sm:text-lg mb-1">Full-Stack Developer</h4>
+                <p class="text-xs sm:text-sm text-gray-600 professional-text">Hardware, firmware, and software integration expertise</p>
               </div>
             </div>
           </div>
 
           <div class="highlight-box">
-            <div class="flex items-start space-x-4">
-              <div class="text-green-600 text-3xl flex-shrink-0"><i class="fas fa-robot"></i></div>
-              <div>
-                <h4 class="font-bold text-gray-900 text-lg mb-1">Computer Vision & AI Integration</h4>
-                <p class="text-gray-600 text-sm professional-text">Advanced OpenCV, YOLO, and deep learning implementations for robotics</p>
+            <div class="flex items-start space-x-3 sm:space-x-4 gap-2">
+              <div class="text-2xl sm:text-3xl flex-shrink-0 text-green-600"><i class="fas fa-robot"></i></div>
+              <div class="min-w-0">
+                <h4 class="font-bold text-gray-900 text-base sm:text-lg mb-1">Computer Vision & AI</h4>
+                <p class="text-xs sm:text-sm text-gray-600 professional-text">OpenCV, YOLO, and advanced image processing</p>
               </div>
             </div>
           </div>
@@ -673,26 +718,26 @@
   </section>
 
   <!-- Contact & CTA Section -->
-  <section id="contact" class="py-24 bg-gradient-to-br from-gray-900 to-gray-800">
-    <div class="max-w-5xl mx-auto px-6 text-center">
-      <h2 class="text-5xl font-bold mb-6 text-white leading-tight">
+  <section id="contact" class="section py-16 sm:py-20 md:py-24 bg-gradient-to-br from-gray-900 to-gray-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 text-white leading-tight">
         Let's Build Something <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Remarkable</span>
       </h2>
-      <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto professional-text">
-        I'm actively interested in discussing new robotics projects, research collaborations, and innovative automation solutions. Let's connect and create something extraordinary.
+      <p class="text-sm sm:text-base md:text-lg text-gray-300 mb-8 sm:mb-10 max-w-2xl mx-auto professional-text">
+        Interested in discussing robotics projects, collaborations, or innovative automation solutions? Let's connect!
       </p>
 
-      <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
-        <a href="mailto:samshoni10@gmail.com" class="cta-button text-white px-8 py-4 rounded-full font-semibold text-lg inline-block text-center">
+      <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 mb-10 sm:mb-12 w-full">
+        <a href="mailto:samshoni10@gmail.com" class="cta-button text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-lg w-full sm:w-auto">
           <i class="fas fa-envelope mr-2"></i> Send Email
         </a>
-        <a href="https://www.linkedin.com/in/sam-shoni-7b2b94301" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg inline-block text-center transition-all">
-          <i class="fab fa-linkedin mr-2"></i> Connect on LinkedIn
+        <a href="https://www.linkedin.com/in/sam-shoni-7b2b94301" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-lg transition-all w-full sm:w-auto">
+          <i class="fab fa-linkedin mr-2"></i> LinkedIn
         </a>
       </div>
 
       <!-- Social Links -->
-      <div class="flex justify-center space-x-8 text-2xl mb-8">
+      <div class="flex justify-center space-x-6 sm:space-x-8 text-xl sm:text-2xl mb-6 sm:mb-8">
         <a href="https://github.com/samshoni" target="_blank" class="text-gray-400 hover:text-white transition transform hover:scale-125">
           <i class="fab fa-github"></i>
         </a>
@@ -709,14 +754,14 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-950 text-gray-400 py-8 border-t border-gray-800">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div>
-          <p class="font-semibold text-white mb-1">Sam Shoni</p>
-          <p class="text-sm professional-text">Robotics & Automation Engineer | ROS 2 Developer</p>
+  <footer class="bg-gray-950 text-gray-400 py-6 sm:py-8 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+        <div class="text-center sm:text-left">
+          <p class="font-semibold text-white mb-1 text-sm sm:text-base">Sam Shoni</p>
+          <p class="text-xs sm:text-sm professional-text">Robotics & Automation Engineer | ROS 2 Developer</p>
         </div>
-        <p class="text-sm mt-4 md:mt-0 professional-text">© 2025 Sam Shoni. All rights reserved. | Engineered with passion for robotics.</p>
+        <p class="text-xs sm:text-sm mt-3 sm:mt-0 professional-text text-center sm:text-right">© 2025 Sam Shoni. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -761,10 +806,10 @@
       const timer = setInterval(() => {
         start += increment;
         if (start >= target) {
-          if (target === 2) {
-            element.textContent = '2-3';
-          } else if (target === 40) {
+          if (target === 40) {
             element.textContent = '40+';
+          } else if (target === 10) {
+            element.textContent = '10+';
           } else {
             element.textContent = target;
           }
@@ -782,11 +827,11 @@
           entry.target.setAttribute('data-animated', 'true');
           document.querySelectorAll('.counter').forEach((counter, index) => {
             if (index === 0) {
-              animateCounter(counter, 2);
-            } else if (index === 1) {
               animateCounter(counter, 40);
+            } else if (index === 1) {
+              animateCounter(counter, 10);
             } else {
-              animateCounter(counter, 2);
+              animateCounter(counter, 999, 1000);
             }
           });
           statsObserver.unobserve(entry.target);
@@ -796,6 +841,20 @@
 
     document.querySelectorAll('.stat-box').forEach(box => {
       statsObserver.observe(box);
+    });
+
+    // Prevent overflow issues
+    document.addEventListener('DOMContentLoaded', function() {
+      const html = document.documentElement;
+      const body = document.body;
+      
+      html.style.overflow = 'hidden';
+      body.style.overflow = 'hidden';
+      
+      setTimeout(() => {
+        html.style.overflow = '';
+        body.style.overflow = '';
+      }, 100);
     });
   </script>
 
