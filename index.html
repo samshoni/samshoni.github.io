@@ -1059,7 +1059,94 @@
     body.dark-mode footer strong {
       color: #cbd5e1;
     }
-  </style>
+  
+/* Additional Enhancements for Recruiter Appeal */
+.project-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.project-card:hover::after {
+    left: 100%;
+}
+
+/* Add subtle pulsing animation to CTA buttons */
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+    }
+    50% {
+        box-shadow: 0 10px 35px rgba(37, 99, 235, 0.4);
+    }
+}
+
+.cta-primary {
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Enhance skill cards with gradient borders on hover */
+.skill-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #2563eb, #7c3aed, #ec4899, #2563eb);
+    background-size: 400% 400%;
+    border-radius: 10px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    animation: gradient-rotate 3s ease infinite;
+}
+
+@keyframes gradient-rotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.skill-card:hover::after {
+    opacity: 1;
+}
+
+/* Add smooth reveal animation for sections */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section > div {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Enhanced GitHub button with icon animation */
+.github-button i {
+    transition: transform 0.3s ease;
+}
+
+.github-button:hover i:first-child {
+    transform: rotate(360deg);
+}
+
+.github-button:hover i:last-child {
+    transform: translateX(5px);
+}
+</style>
+
 </head>
 <body class="dark-mode">
 <nav class="navbar">
@@ -1147,7 +1234,7 @@ Final-year <strong>Robotics & Automation Engineering student</strong> from Keral
 <div class="stat-glow" style="position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at top,rgba(124,58,237,0.1),transparent);opacity:0;transition:opacity 0.4s ease;"></div>
 <div style="position:relative;z-index:1;">
 <div style="font-size:3.5rem;margin-bottom:1rem;filter:drop-shadow(0 4px 8px rgba(124,58,237,0.3));">🚀</div>
-<h3 style="font-size:3rem;font-weight:800;background:linear-gradient(135deg,#7c3aed,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem;">15+</h3>
+<h3 style="font-size:3rem;font-weight:800;background:linear-gradient(135deg,#7c3aed,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem;">10+</h3>
 <p style="font-size:1.1rem;color:var(--text-color);font-weight:600;margin-bottom:0.5rem;">Minor Projects</p>
 <p style="font-size:0.9rem;color:var(--text-color);opacity:0.7;">ROS 2, SLAM & Autonomous Systems</p>
 </div>
@@ -1179,7 +1266,7 @@ Final-year <strong>Robotics & Automation Engineering student</strong> from Keral
 
 <!-- GitHub Profile Link -->
 <div style="text-align:center;margin-top:3rem;">
-<a href="https://github.com/samshonixyz" target="_blank" class="github-button" style="display:inline-flex;align-items:center;gap:0.75rem;padding:1rem 2.5rem;background:linear-gradient(135deg,#2563eb,#7c3aed);color:white;border-radius:50px;text-decoration:none;font-weight:700;font-size:1.1rem;box-shadow:0 10px 30px rgba(37,99,235,0.3);transition:all 0.4s ease;">
+<a href="https://github.com/samshoni" target="_blank" class="github-button" style="display:inline-flex;align-items:center;gap:0.75rem;padding:1rem 2.5rem;background:linear-gradient(135deg,#2563eb,#7c3aed);color:white;border-radius:50px;text-decoration:none;font-weight:700;font-size:1.1rem;box-shadow:0 10px 30px rgba(37,99,235,0.3);transition:all 0.4s ease;">
 <i class="fab fa-github" style="font-size:1.5rem;"></i> 
 <span>Explore My GitHub Profile</span>
 <i class="fas fa-external-link-alt" style="font-size:0.9rem;"></i>
@@ -1263,7 +1350,7 @@ View Project <i class="fas fa-arrow-right" style="margin-left:0.5rem;transition:
 </a>
 
 <!-- Project Card 2 -->
-<a class="project-card" href="https://github.com/samshoni/sensor-fusion-ekf" target="_blank" style="position:relative;display:block;background:var(--card-bg);border-radius:20px;padding:2rem;text-decoration:none;color:inherit;overflow:hidden;border:2px solid transparent;transition:all 0.4s ease;">
+<a class="project-card" href="https://github.com/samshoni/Extended-Kalman-Filter-ros2-sensor-fusion" target="_blank" style="position:relative;display:block;background:var(--card-bg);border-radius:20px;padding:2rem;text-decoration:none;color:inherit;overflow:hidden;border:2px solid transparent;transition:all 0.4s ease;">
 <div class="card-glow" style="position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,99,235,0.15),transparent 70%);opacity:0;transition:opacity 0.4s ease;pointer-events:none;"></div>
 <div style="position:relative;z-index:1;">
 <div class="card-icon" style="width:70px;height:70px;background:linear-gradient(135deg,#7c3aed,#a855f7);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;box-shadow:0 8px 20px rgba(124,58,237,0.3);transition:transform 0.4s ease;">
@@ -1283,7 +1370,7 @@ View Project <i class="fas fa-arrow-right" style="margin-left:0.5rem;transition:
 </a>
 
 <!-- Project Card 3 -->
-<a class="project-card" href="https://github.com/samshoni/6dof-robotic-arm" target="_blank" style="position:relative;display:block;background:var(--card-bg);border-radius:20px;padding:2rem;text-decoration:none;color:inherit;overflow:hidden;border:2px solid transparent;transition:all 0.4s ease;">
+<a class="project-card" href="https://github.com/samshoni/Automated-6DOF-Robotic-Arm-with-GUI" target="_blank" style="position:relative;display:block;background:var(--card-bg);border-radius:20px;padding:2rem;text-decoration:none;color:inherit;overflow:hidden;border:2px solid transparent;transition:all 0.4s ease;">
 <div class="card-glow" style="position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,99,235,0.15),transparent 70%);opacity:0;transition:opacity 0.4s ease;pointer-events:none;"></div>
 <div style="position:relative;z-index:1;">
 <div class="card-icon" style="width:70px;height:70px;background:linear-gradient(135deg,#ec4899,#f472b6);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;box-shadow:0 8px 20px rgba(236,72,153,0.3);transition:transform 0.4s ease;">
