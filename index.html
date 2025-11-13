@@ -260,6 +260,81 @@
       }
     }
 
+<<<<<<< HEAD
+=======
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-left {
+      text-align: left;
+    }
+
+    .hero-right {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-main-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    @media (min-width: 768px) {
+      .hero-main-title {
+        font-size: 3.8rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-main-title {
+        font-size: 4.5rem;
+      }
+    }
+
+    .emoji-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .emoji-group span {
+      font-size: 2.5rem;
+      margin: 0 0.5rem;
+      display: inline-block;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    .emoji-group span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .emoji-group span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .hero h1 {
+      font-weight: 900;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    body.dark-mode .hero h1 {
+      color: #f1f5f9;
+    }
+
+    /* Dynamic Name Animation */
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
     .dynamic-name {
       background: linear-gradient(90deg, #2563eb 0%, #7c3aed 25%, #ec4899 50%, #7c3aed 75%, #2563eb 100%);
       background-size: 200% auto;
@@ -310,6 +385,7 @@
       color: #cbd5e1;
     }
 
+<<<<<<< HEAD
     /* Stats Grid */
     .stats-grid {
       display: grid;
@@ -386,6 +462,27 @@
       color: white;
     }
 
+=======
+    /* Profile Image */
+    .profile-image {
+      width: 280px;
+      height: 340px;
+      border-radius: 12px;
+      object-fit: cover;
+      display: block;
+      position: relative;
+      filter: contrast(1.05) brightness(1.02);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @media (min-width: 768px) {
+      .profile-image {
+        width: 350px;
+        height: 400px;
+      }
+    }
+
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
     /* CTA Buttons */
     .cta-group {
       display: flex;
@@ -554,6 +651,7 @@
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
+<<<<<<< HEAD
       font-size: 0.95rem;
     }
 
@@ -562,12 +660,17 @@
         margin-bottom: 3rem;
         font-size: 1.1rem;
       }
+=======
+      font-size: 1rem;
+      line-height: 1.6;
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
     }
 
     body.dark-mode .section-subtitle {
       color: #cbd5e1;
     }
 
+<<<<<<< HEAD
     /* Card Grid */
     .card-grid {
       display: grid;
@@ -692,6 +795,9 @@
     }
 
     /* Skills Section */
+=======
+    /* Skill Cards */
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
     .skill-cards {
       display: grid;
       grid-template-columns: 1fr;
@@ -721,33 +827,11 @@
       padding: 1.5rem 1.25rem;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
       transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      position: relative;
-      overflow: hidden;
     }
 
     body.dark-mode .skill-card {
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
       border-left-color: #60a5fa;
-    }
-
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #2563eb, #7c3aed);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-      transform-origin: left;
-    }
-
-    .skill-card:hover::before {
-      transform: scaleX(1);
     }
 
     .skill-card:hover {
@@ -764,11 +848,6 @@
       font-size: 2rem;
       margin-bottom: 1rem;
       transition: all 0.3s ease;
-    }
-
-    .skill-card:hover .skill-icon-box {
-      transform: scale(1.1);
-      filter: drop-shadow(0 5px 10px rgba(37, 99, 235, 0.3));
     }
 
     .skill-card h3 {
@@ -888,6 +967,7 @@
       color: #cbd5e1;
     }
 
+<<<<<<< HEAD
     /* Mobile Optimizations */
     @media (max-width: 640px) {
       .navbar-content {
@@ -962,6 +1042,271 @@
         animation-delay: 0s !important;
       }
     }
+=======
+    /* Additional Enhancements */
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+      }
+      50% {
+        box-shadow: 0 10px 35px rgba(37, 99, 235, 0.4);
+      }
+    }
+
+    /* ========================================
+       MOBILE OPTIMIZATIONS - CRITICAL SECTION
+       ======================================== */
+    
+    @media (max-width: 640px) {
+      /* Navbar Mobile */
+      .navbar-content {
+        padding: 0.75rem 1rem;
+      }
+      
+      .navbar-logo {
+        font-size: 1.25rem;
+      }
+      
+      /* Hero Section Mobile */
+      .hero {
+        padding: 1.5rem 1rem;
+        min-height: auto;
+      }
+      
+      .hero-content {
+        padding: 1rem;
+      }
+      
+      .hero-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
+      
+      .hero-main-title {
+        font-size: 1.75rem !important;
+        line-height: 1.1;
+        margin-bottom: 0.75rem;
+      }
+      
+      .hero-left {
+        text-align: center !important;
+      }
+      
+      .hero-left p {
+        font-size: 0.95rem !important;
+      }
+      
+      .hero-left p:first-of-type {
+        font-size: 1.35rem !important;
+      }
+      
+      .hero-right {
+        margin: 0 auto;
+        width: 100%;
+      }
+      
+      .hero-right > div {
+        width: 100% !important;
+        max-width: 300px;
+      }
+      
+      .profile-image {
+        width: 260px !important;
+        height: 300px !important;
+      }
+      
+      .hero-right .profile-image {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 280px;
+        aspect-ratio: 3/4;
+      }
+      
+      /* Tag Badges Mobile */
+      .hero-left > div:nth-child(4) {
+        justify-content: center !important;
+      }
+      
+      .hero-left > div:nth-child(4) span {
+        font-size: 0.8rem !important;
+        padding: 0.4rem 0.75rem !important;
+      }
+      
+      /* Stats Section Mobile */
+      .github-stats-container {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
+      
+      .stat-card {
+        padding: 2rem 1.5rem !important;
+      }
+      
+      .stat-card h3 {
+        font-size: 2.2rem !important;
+      }
+      
+      .stat-card p:first-of-type {
+        font-size: 1rem !important;
+      }
+      
+      .stat-card p:last-of-type {
+        font-size: 0.85rem !important;
+      }
+      
+      /* Projects Section Mobile */
+      .projects-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
+      
+      .project-card {
+        padding: 1.5rem !important;
+      }
+      
+      .project-card .card-icon {
+        width: 60px !important;
+        height: 60px !important;
+      }
+      
+      .project-card h3 {
+        font-size: 1.25rem !important;
+      }
+      
+      .project-card p {
+        font-size: 0.9rem !important;
+      }
+      
+      /* Skills Section Mobile */
+      .skill-cards {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
+      
+      .skill-card {
+        padding: 1.5rem 1.25rem !important;
+      }
+      
+      /* Buttons Mobile */
+      .cta-group {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        width: 100%;
+      }
+      
+      .cta-button {
+        width: 100%;
+        padding: 1rem 1.5rem !important;
+        font-size: 0.9rem !important;
+      }
+      
+      .github-button {
+        padding: 0.875rem 1.5rem !important;
+        font-size: 0.95rem !important;
+      }
+      
+      /* Sections Mobile */
+      .section {
+        padding: 3rem 1rem !important;
+      }
+      
+      .section h2 {
+        font-size: 1.75rem !important;
+        margin-bottom: 0.75rem;
+      }
+      
+      .section-subtitle {
+        font-size: 0.95rem !important;
+        margin-bottom: 2rem !important;
+      }
+      
+      /* Fixed Elements Mobile */
+      .theme-toggle {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.25rem !important;
+        bottom: 20px !important;
+        right: 20px !important;
+      }
+      
+      .back-to-top {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 1rem !important;
+        bottom: 85px !important;
+        right: 20px !important;
+      }
+      
+      /* Tech Tags Mobile */
+      .tech-tag {
+        font-size: 0.75rem !important;
+        padding: 0.35rem 0.7rem !important;
+      }
+      
+      /* About Section Mobile */
+      .about-box {
+        padding: 1.25rem !important;
+      }
+      
+      .about-box p {
+        font-size: 0.9rem !important;
+        line-height: 1.7;
+      }
+      
+      /* Social Links Mobile */
+      .social-links {
+        font-size: 1.5rem !important;
+        gap: 1.25rem !important;
+      }
+      
+      /* Footer Mobile */
+      footer {
+        padding: 1.5rem 1rem !important;
+      }
+      
+      footer p {
+        font-size: 0.85rem !important;
+      }
+    }
+    
+    /* Tablet Optimizations (641px - 1024px) */
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .hero-grid {
+        gap: 2.5rem;
+      }
+      
+      .hero-main-title {
+        font-size: 2.5rem !important;
+      }
+      
+      .github-stats-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      
+      .skill-cards {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+    
+    /* Extra Small Phones (< 375px) */
+    @media (max-width: 374px) {
+      .hero-main-title {
+        font-size: 1.5rem !important;
+      }
+      
+      .navbar-logo {
+        font-size: 1.1rem !important;
+      }
+      
+      .section h2 {
+        font-size: 1.5rem !important;
+      }
+    }
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
 </style>
 </head>
 <body class="dark-mode">
@@ -1003,7 +1348,22 @@ Final-year <strong>Robotics & Automation Engineering student</strong> from Keral
 </div>
 <div class="cta-group">
 <a class="cta-button cta-primary" href="#projects"><i class="fas fa-rocket"></i> View Projects</a>
+<<<<<<< HEAD
 <a class="cta-button cta-secondary" href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+=======
+<a class="cta-button cta-secondary" href="#contact"><i class="fas fa-envelope"></i> Contact Me</a>
+</div>
+</div>
+
+<!-- Right Column: Profile Photo -->
+<div class="hero-right">
+<div style="position:absolute;width:100%;height:100%;background:linear-gradient(135deg,rgba(37,99,235,0.2),rgba(124,58,237,0.2));border-radius:30px;filter:blur(40px);"></div>
+<div style="position:relative;padding:1.5rem;background:var(--card-bg);border-radius:30px;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+<img alt="Sam Shoni" class="profile-image" src="profile.jpg" style="border-radius:20px;object-fit:cover;border:4px solid var(--primary-color);box-shadow:0 10px 30px rgba(37,99,235,0.4);"/>
+<div style="position:absolute;top:-10px;right:-10px;width:80px;height:80px;background:linear-gradient(135deg,#2563eb,#7c3aed);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 20px rgba(37,99,235,0.5);">
+<span style="font-size:2rem;">🚀</span>
+</div>
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
 </div>
 </div>
 </div>
@@ -1020,6 +1380,7 @@ Final-year <strong>Robotics & Automation Engineering student</strong> from Keral
 
 <div class="stats-grid">
 
+<<<<<<< HEAD
 <!-- Total Repositories (UPDATED TO 50+) -->
 <div class="stat-box">
 <div style="font-size: 2.5rem; margin-bottom: 1rem;">📚</div>
@@ -1050,21 +1411,70 @@ Final-year <strong>Robotics & Automation Engineering student</strong> from Keral
 <div style="font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #f59e0b, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;" class="stat-number">∞</div>
 <p style="font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">Learning</p>
 <p style="font-size: 0.85rem; opacity: 0.7;">Always innovating & growing</p>
+=======
+<div class="stat-card" style="position:relative;background:var(--bg-color);padding:2.5rem 2rem;border-radius:20px;overflow:hidden;border:2px solid transparent;transition:all 0.4s ease;">
+<div class="stat-glow" style="position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at top,rgba(37,99,235,0.1),transparent);opacity:0;transition:opacity 0.4s ease;"></div>
+<div style="position:relative;z-index:1;">
+<div style="font-size:3.5rem;margin-bottom:1rem;filter:drop-shadow(0 4px 8px rgba(37,99,235,0.3));">📚</div>
+<h3 style="font-size:3rem;font-weight:800;background:linear-gradient(135deg,#2563eb,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem;">50+</h3>
+<p style="font-size:1.1rem;color:var(--text-color);font-weight:600;margin-bottom:0.5rem;">GitHub Repositories</p>
+<p style="font-size:0.9rem;color:var(--text-color);opacity:0.7;">Open-source projects & experiments</p>
+</div>
+</div>
+
+<div class="stat-card" style="position:relative;background:var(--bg-color);padding:2.5rem 2rem;border-radius:20px;overflow:hidden;border:2px solid transparent;transition:all 0.4s ease;">
+<div class="stat-glow" style="position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at top,rgba(124,58,237,0.1),transparent);opacity:0;transition:opacity 0.4s ease;"></div>
+<div style="position:relative;z-index:1;">
+<div style="font-size:3.5rem;margin-bottom:1rem;filter:drop-shadow(0 4px 8px rgba(124,58,237,0.3));">🚀</div>
+<h3 style="font-size:3rem;font-weight:800;background:linear-gradient(135deg,#7c3aed,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem;">10+</h3>
+<p style="font-size:1.1rem;color:var(--text-color);font-weight:600;margin-bottom:0.5rem;">Minor Projects</p>
+<p style="font-size:0.9rem;color:var(--text-color);opacity:0.7;">ROS 2, SLAM & Autonomous Systems</p>
+</div>
+</div>
+
+<div class="stat-card" style="position:relative;background:var(--bg-color);padding:2.5rem 2rem;border-radius:20px;overflow:hidden;border:2px solid transparent;transition:all 0.4s ease;">
+<div class="stat-glow" style="position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at top,rgba(236,72,153,0.1),transparent);opacity:0;transition:opacity 0.4s ease;"></div>
+<div style="position:relative;z-index:1;">
+<div style="font-size:3.5rem;margin-bottom:1rem;filter:drop-shadow(0 4px 8px rgba(236,72,153,0.3));">💻</div>
+<h3 style="font-size:3rem;font-weight:800;background:linear-gradient(135deg,#ec4899,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem;">5+</h3>
+<p style="font-size:1.1rem;color:var(--text-color);font-weight:600;margin-bottom:0.5rem;">Tech Stack</p>
+<p style="font-size:0.9rem;color:var(--text-color);opacity:0.7;">ROS 2, Python, C++, OpenCV & more</p>
+</div>
+</div>
+
+<div class="stat-card" style="position:relative;background:var(--bg-color);padding:2.5rem 2rem;border-radius:20px;overflow:hidden;border:2px solid transparent;transition:all 0.4s ease;">
+<div class="stat-glow" style="position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at top,rgba(245,158,11,0.1),transparent);opacity:0;transition:opacity 0.4s ease;"></div>
+<div style="position:relative;z-index:1;">
+<div style="font-size:3.5rem;margin-bottom:1rem;filter:drop-shadow(0 4px 8px rgba(245,158,11,0.3));">⚡</div>
+<h3 style="font-size:3rem;font-weight:800;background:linear-gradient(135deg,#f59e0b,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem;">∞</h3>
+<p style="font-size:1.1rem;color:var(--text-color);font-weight:600;margin-bottom:0.5rem;">Continuous Learning</p>
+<p style="font-size:0.9rem;color:var(--text-color);opacity:0.7;">Always exploring & innovating</p>
+</div>
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
 </div>
 
 </div>
 
+<<<<<<< HEAD
 <!-- GitHub Profile Link -->
 <div style="text-align: center; margin-top: 2rem;">
 <a href="https://github.com/samshoni" target="_blank" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.875rem 2rem; background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3); transition: all 0.4s ease; border: none; cursor: pointer; min-height: 44px;">
 <i class="fab fa-github" style="font-size: 1.25rem;"></i> 
 <span>Explore My GitHub</span>
 <i class="fas fa-external-link-alt" style="font-size: 0.85rem;"></i>
+=======
+<div style="text-align:center;margin-top:3rem;">
+<a href="https://github.com/samshoni" target="_blank" class="github-button" style="display:inline-flex;align-items:center;gap:0.75rem;padding:1rem 2.5rem;background:linear-gradient(135deg,#2563eb,#7c3aed);color:white;border-radius:50px;text-decoration:none;font-weight:700;font-size:1.1rem;box-shadow:0 10px 30px rgba(37,99,235,0.3);transition:all 0.4s ease;">
+<i class="fab fa-github" style="font-size:1.5rem;"></i> 
+<span>Explore My GitHub Profile</span>
+<i class="fas fa-external-link-alt" style="font-size:0.9rem;"></i>
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
 </a>
 </div>
 </div>
 </section>
 
+<<<<<<< HEAD
 <section class="section section-bg" id="projects">
 <div style="max-width: 1200px; margin: 0 auto;">
 <div style="text-align: center; margin-bottom: 2rem;">
@@ -1084,10 +1494,54 @@ Final-year <strong>Robotics & Automation Engineering student</strong> from Keral
 <span class="project-tag">ROS 2</span>
 <span class="project-tag">Navigation</span>
 <span class="project-tag">State Machine</span>
+=======
+<style>
+.stat-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 20px 60px rgba(37,99,235,0.4) !important;
+}
+
+.stat-card:hover .stat-glow {
+    opacity: 1;
+}
+
+.github-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(37,99,235,0.5) !important;
+}
+</style>
+
+<section class="section section-bg" id="projects" style="padding:5rem 2rem;position:relative;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
+<div style="text-align:center;margin-bottom:3rem;">
+<h2 style="font-size:2.5rem;font-weight:900;margin-bottom:1rem;">Featured <span class="dynamic-name">Projects</span></h2>
+<p class="section-subtitle" style="font-size:1.1rem;opacity:0.8;">Innovative robotics solutions showcasing expertise in autonomous systems and intelligent automation</p>
+</div>
+
+<div class="projects-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;">
+
+<a class="project-card" href="https://github.com/samshoni/ros2-autonomous-docking" target="_blank" style="position:relative;display:block;background:var(--card-bg);border-radius:20px;padding:2rem;text-decoration:none;color:inherit;overflow:hidden;border:2px solid transparent;transition:all 0.4s ease;">
+<div class="card-glow" style="position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,99,235,0.15),transparent 70%);opacity:0;transition:opacity 0.4s ease;pointer-events:none;"></div>
+<div style="position:relative;z-index:1;">
+<div class="card-icon" style="width:70px;height:70px;background:linear-gradient(135deg,#2563eb,#3b82f6);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;box-shadow:0 8px 20px rgba(37,99,235,0.3);transition:transform 0.4s ease;">
+<i class="fas fa-robot" style="font-size:2rem;color:white;"></i>
+</div>
+<h3 style="font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--text-color);">Autonomous Robot Docking</h3>
+<p style="font-size:1rem;line-height:1.6;color:var(--text-color);opacity:0.8;margin-bottom:1.5rem;">Mobile robot docking system with state machine control and precision navigation in ROS 2.</p>
+<div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem;">
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(37,99,235,0.1);border-radius:12px;font-size:0.85rem;color:var(--primary-color);font-weight:600;">ROS 2</span>
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(37,99,235,0.1);border-radius:12px;font-size:0.85rem;color:var(--primary-color);font-weight:600;">Navigation</span>
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(37,99,235,0.1);border-radius:12px;font-size:0.85rem;color:var(--primary-color);font-weight:600;">State Machine</span>
+</div>
+<div style="display:flex;align-items:center;color:var(--primary-color);font-weight:600;font-size:0.95rem;">
+View Project <i class="fas fa-arrow-right" style="margin-left:0.5rem;transition:transform 0.3s ease;"></i>
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
 </div>
 </div>
 </a>
 
+<<<<<<< HEAD
 <!-- Project Card 2 -->
 <a class="card" href="https://github.com/samshoni/Extended-Kalman-Filter-ros2-sensor-fusion" target="_blank">
 <div class="card-icon"><i class="fas fa-broadcast-tower"></i></div>
@@ -1098,10 +1552,28 @@ Final-year <strong>Robotics & Automation Engineering student</strong> from Keral
 <span class="project-tag">EKF</span>
 <span class="project-tag">IMU</span>
 <span class="project-tag">Odometry</span>
+=======
+<a class="project-card" href="https://github.com/samshoni/Extended-Kalman-Filter-ros2-sensor-fusion" target="_blank" style="position:relative;display:block;background:var(--card-bg);border-radius:20px;padding:2rem;text-decoration:none;color:inherit;overflow:hidden;border:2px solid transparent;transition:all 0.4s ease;">
+<div class="card-glow" style="position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,99,235,0.15),transparent 70%);opacity:0;transition:opacity 0.4s ease;pointer-events:none;"></div>
+<div style="position:relative;z-index:1;">
+<div class="card-icon" style="width:70px;height:70px;background:linear-gradient(135deg,#7c3aed,#a855f7);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;box-shadow:0 8px 20px rgba(124,58,237,0.3);transition:transform 0.4s ease;">
+<i class="fas fa-broadcast-tower" style="font-size:2rem;color:white;"></i>
+</div>
+<h3 style="font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--text-color);">Sensor Fusion with EKF</h3>
+<p style="font-size:1rem;line-height:1.6;color:var(--text-color);opacity:0.8;margin-bottom:1.5rem;">Fusion of IMU and odometry data for accurate robot localization using Extended Kalman Filter.</p>
+<div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem;">
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(124,58,237,0.1);border-radius:12px;font-size:0.85rem;color:#a855f7;font-weight:600;">EKF</span>
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(124,58,237,0.1);border-radius:12px;font-size:0.85rem;color:#a855f7;font-weight:600;">IMU</span>
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(124,58,237,0.1);border-radius:12px;font-size:0.85rem;color:#a855f7;font-weight:600;">Odometry</span>
+</div>
+<div style="display:flex;align-items:center;color:#a855f7;font-weight:600;font-size:0.95rem;">
+View Project <i class="fas fa-arrow-right" style="margin-left:0.5rem;transition:transform 0.3s ease;"></i>
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
 </div>
 </div>
 </a>
 
+<<<<<<< HEAD
 <!-- Project Card 3 -->
 <a class="card" href="https://github.com/samshoni/Automated-6DOF-Robotic-Arm-with-GUI" target="_blank">
 <div class="card-icon"><i class="fas fa-hand-rock"></i></div>
@@ -1112,10 +1584,28 @@ Final-year <strong>Robotics & Automation Engineering student</strong> from Keral
 <span class="project-tag">Arduino</span>
 <span class="project-tag">Servos</span>
 <span class="project-tag">GUI</span>
+=======
+<a class="project-card" href="https://github.com/samshoni/Automated-6DOF-Robotic-Arm-with-GUI" target="_blank" style="position:relative;display:block;background:var(--card-bg);border-radius:20px;padding:2rem;text-decoration:none;color:inherit;overflow:hidden;border:2px solid transparent;transition:all 0.4s ease;">
+<div class="card-glow" style="position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,99,235,0.15),transparent 70%);opacity:0;transition:opacity 0.4s ease;pointer-events:none;"></div>
+<div style="position:relative;z-index:1;">
+<div class="card-icon" style="width:70px;height:70px;background:linear-gradient(135deg,#ec4899,#f472b6);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;box-shadow:0 8px 20px rgba(236,72,153,0.3);transition:transform 0.4s ease;">
+<i class="fas fa-hand-rock" style="font-size:2rem;color:white;"></i>
+</div>
+<h3 style="font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--text-color);">6-DOF Robotic Arm</h3>
+<p style="font-size:1rem;line-height:1.6;color:var(--text-color);opacity:0.8;margin-bottom:1.5rem;">6-DOF arm with Processing GUI for multi-servo control, automation sequences, and hardware integration.</p>
+<div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem;">
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(236,72,153,0.1);border-radius:12px;font-size:0.85rem;color:#f472b6;font-weight:600;">Arduino</span>
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(236,72,153,0.1);border-radius:12px;font-size:0.85rem;color:#f472b6;font-weight:600;">Servos</span>
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(236,72,153,0.1);border-radius:12px;font-size:0.85rem;color:#f472b6;font-weight:600;">GUI</span>
+</div>
+<div style="display:flex;align-items:center;color:#f472b6;font-weight:600;font-size:0.95rem;">
+View Project <i class="fas fa-arrow-right" style="margin-left:0.5rem;transition:transform 0.3s ease;"></i>
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
 </div>
 </div>
 </a>
 
+<<<<<<< HEAD
 <!-- Project Card 4 -->
 <a class="card" href="https://github.com/samshoni/Self-Balancing-Robot-PID-Controller" target="_blank">
 <div class="card-icon"><i class="fas fa-balance-scale"></i></div>
@@ -1126,10 +1616,28 @@ Final-year <strong>Robotics & Automation Engineering student</strong> from Keral
 <span class="project-tag">PID</span>
 <span class="project-tag">IMU</span>
 <span class="project-tag">Arduino</span>
+=======
+<a class="project-card" href="https://github.com/samshoni/Self-Balancing-Robot-PID-Controller" target="_blank" style="position:relative;display:block;background:var(--card-bg);border-radius:20px;padding:2rem;text-decoration:none;color:inherit;overflow:hidden;border:2px solid transparent;transition:all 0.4s ease;">
+<div class="card-glow" style="position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,99,235,0.15),transparent 70%);opacity:0;transition:opacity 0.4s ease;pointer-events:none;"></div>
+<div style="position:relative;z-index:1;">
+<div class="card-icon" style="width:70px;height:70px;background:linear-gradient(135deg,#14b8a6,#2dd4bf);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;box-shadow:0 8px 20px rgba(20,184,166,0.3);transition:transform 0.4s ease;">
+<i class="fas fa-balance-scale" style="font-size:2rem;color:white;"></i>
+</div>
+<h3 style="font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--text-color);">Self-Balancing Robot</h3>
+<p style="font-size:1rem;line-height:1.6;color:var(--text-color);opacity:0.8;margin-bottom:1.5rem;">Two-wheel robot balancing using PID algorithm and IMU feedback with real-time control.</p>
+<div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem;">
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(20,184,166,0.1);border-radius:12px;font-size:0.85rem;color:#2dd4bf;font-weight:600;">PID Control</span>
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(20,184,166,0.1);border-radius:12px;font-size:0.85rem;color:#2dd4bf;font-weight:600;">IMU</span>
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(20,184,166,0.1);border-radius:12px;font-size:0.85rem;color:#2dd4bf;font-weight:600;">Arduino</span>
+</div>
+<div style="display:flex;align-items:center;color:#2dd4bf;font-weight:600;font-size:0.95rem;">
+View Project <i class="fas fa-arrow-right" style="margin-left:0.5rem;transition:transform 0.3s ease;"></i>
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
 </div>
 </div>
 </a>
 
+<<<<<<< HEAD
 <!-- Project Card 5 -->
 <a class="card" href="https://github.com/samshoni/smart-car-retrieval-using-face-recognition-ros2" target="_blank">
 <div class="card-icon"><i class="fas fa-user-check"></i></div>
@@ -1140,10 +1648,28 @@ Final-year <strong>Robotics & Automation Engineering student</strong> from Keral
 <span class="project-tag">OpenCV</span>
 <span class="project-tag">ROS 2</span>
 <span class="project-tag">Detection</span>
+=======
+<a class="project-card" href="https://github.com/samshoni/smart-car-retrieval-using-face-recognition-ros2" target="_blank" style="position:relative;display:block;background:var(--card-bg);border-radius:20px;padding:2rem;text-decoration:none;color:inherit;overflow:hidden;border:2px solid transparent;transition:all 0.4s ease;">
+<div class="card-glow" style="position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,99,235,0.15),transparent 70%);opacity:0;transition:opacity 0.4s ease;pointer-events:none;"></div>
+<div style="position:relative;z-index:1;">
+<div class="card-icon" style="width:70px;height:70px;background:linear-gradient(135deg,#f59e0b,#fbbf24);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;box-shadow:0 8px 20px rgba(245,158,11,0.3);transition:transform 0.4s ease;">
+<i class="fas fa-user-check" style="font-size:2rem;color:white;"></i>
+</div>
+<h3 style="font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--text-color);">Face Recognition Car</h3>
+<p style="font-size:1rem;line-height:1.6;color:var(--text-color);opacity:0.8;margin-bottom:1.5rem;">Face-recognition-enabled ROS 2 robot car that retrieves and returns autonomously.</p>
+<div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem;">
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(245,158,11,0.1);border-radius:12px;font-size:0.85rem;color:#fbbf24;font-weight:600;">OpenCV</span>
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(245,158,11,0.1);border-radius:12px;font-size:0.85rem;color:#fbbf24;font-weight:600;">ROS 2</span>
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(245,158,11,0.1);border-radius:12px;font-size:0.85rem;color:#fbbf24;font-weight:600;">Face Detection</span>
+</div>
+<div style="display:flex;align-items:center;color:#fbbf24;font-weight:600;font-size:0.95rem;">
+View Project <i class="fas fa-arrow-right" style="margin-left:0.5rem;transition:transform 0.3s ease;"></i>
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
 </div>
 </div>
 </a>
 
+<<<<<<< HEAD
 <!-- Project Card 6 -->
 <a class="card" href="https://github.com/samshoni/my_slam_robot" target="_blank">
 <div class="card-icon"><i class="fas fa-map-marked-alt"></i></div>
@@ -1154,6 +1680,23 @@ Final-year <strong>Robotics & Automation Engineering student</strong> from Keral
 <span class="project-tag">SLAM</span>
 <span class="project-tag">LIDAR</span>
 <span class="project-tag">Mapping</span>
+=======
+<a class="project-card" href="https://github.com/samshoni/my_slam_robot" target="_blank" style="position:relative;display:block;background:var(--card-bg);border-radius:20px;padding:2rem;text-decoration:none;color:inherit;overflow:hidden;border:2px solid transparent;transition:all 0.4s ease;">
+<div class="card-glow" style="position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,99,235,0.15),transparent 70%);opacity:0;transition:opacity 0.4s ease;pointer-events:none;"></div>
+<div style="position:relative;z-index:1;">
+<div class="card-icon" style="width:70px;height:70px;background:linear-gradient(135deg,#ef4444,#f87171);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;box-shadow:0 8px 20px rgba(239,68,68,0.3);transition:transform 0.4s ease;">
+<i class="fas fa-map-marked-alt" style="font-size:2rem;color:white;"></i>
+</div>
+<h3 style="font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--text-color);">SLAM Navigation Robot</h3>
+<p style="font-size:1rem;line-height:1.6;color:var(--text-color);opacity:0.8;margin-bottom:1.5rem;">SLAM-based autonomous mapping robot using ROS 2 and LIDAR integration for environment exploration.</p>
+<div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem;">
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(239,68,68,0.1);border-radius:12px;font-size:0.85rem;color:#f87171;font-weight:600;">SLAM</span>
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(239,68,68,0.1);border-radius:12px;font-size:0.85rem;color:#f87171;font-weight:600;">LIDAR</span>
+<span class="tech-tag" style="padding:0.4rem 0.8rem;background:rgba(239,68,68,0.1);border-radius:12px;font-size:0.85rem;color:#f87171;font-weight:600;">Mapping</span>
+</div>
+<div style="display:flex;align-items:center;color:#f87171;font-weight:600;font-size:0.95rem;">
+View Project <i class="fas fa-arrow-right" style="margin-left:0.5rem;transition:transform 0.3s ease;"></i>
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
 </div>
 </div>
 </a>
@@ -1162,6 +1705,33 @@ Final-year <strong>Robotics & Automation Engineering student</strong> from Keral
 </div>
 </section>
 
+<<<<<<< HEAD
+=======
+<style>
+.project-card {
+    transform: translateY(0);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 20px 60px rgba(37, 99, 235, 0.3) !important;
+}
+
+.project-card:hover .card-glow {
+    opacity: 1;
+}
+
+.project-card:hover .card-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.project-card:hover .fa-arrow-right {
+    transform: translateX(5px);
+}
+</style>
+
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
 <section class="section skills-section" id="skills">
 <div style="max-width: 1200px; margin: 0 auto;">
 <h2 style="font-size: 1.75rem;">Skills & <span class="dynamic-name">Technologies</span></h2>
@@ -1214,11 +1784,20 @@ Final-year <strong>Robotics & Automation Engineering student</strong> from Keral
 <section class="section section-bg" id="about">
 <div style="max-width: 900px; margin: 0 auto;">
 <h2>About <span class="dynamic-name">Me</span></h2>
+<<<<<<< HEAD
 <p class="section-subtitle">Passionate robotics engineer dedicated to innovation</p>
 <div style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border: 2px solid rgba(37, 99, 235, 0.2); border-radius: 15px; padding: 1.5rem; text-align: left;">
 <p><strong>I'm a dedicated Robotics and Automation Engineer</strong> with strong foundations in autonomous systems, embedded systems, and intelligent robotics. Continuously learning and advancing expertise in ROS 2 development.</p>
 <p style="margin-top: 1rem;">My expertise spans <strong>ROS 2 architecture</strong>, <strong>computer vision</strong>, <strong>SLAM algorithms</strong>, and <strong>robotic kinematics</strong>. I specialize in autonomous solutions for real-world problems.</p>
 <p style="margin-top: 1rem;">Multiple projects showcase robotics innovation - from autonomous robots to computer vision systems. Each represents commitment to continuous improvement in robotics engineering.</p>
+=======
+<p class="section-subtitle">Passionate robotics engineer dedicated to continuous learning and innovation</p>
+<div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+<div class="about-box" style="max-width: 900px; margin: 0 auto; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border: 2px solid rgba(37, 99, 235, 0.2); border-radius: 15px; padding: 2rem; text-align: left; transition: all 0.3s ease;">
+<p><strong>I'm a dedicated Robotics and Automation Engineer</strong> with strong foundations in autonomous systems, embedded systems, and intelligent robotics. I'm continuously learning and advancing my expertise in ROS 2 development and cutting-edge robotics technologies.</p>
+<p style="margin-top: 1rem;">My expertise spans across <strong>ROS 2 architecture</strong>, <strong>computer vision systems</strong>, <strong>SLAM algorithms</strong>, and <strong>robotic arm kinematics</strong>. I specialize in designing and implementing autonomous solutions that solve real-world problems.</p>
+<p style="margin-top: 1rem;">I've developed multiple projects showcasing robotics innovation - from autonomous mobile robots to computer vision systems. Each project represents my commitment to learning, building, and continuously improving my robotics engineering skills.</p>
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
 <div style="margin-top: 1.5rem; text-align: center;">
 <a class="cta-button cta-primary" href="https://github.com/samshoni"><i class="fas fa-download"></i> GitHub</a>
 </div>
@@ -1247,8 +1826,13 @@ Final-year <strong>Robotics & Automation Engineering student</strong> from Keral
 <p>© 2025 Sam Shoni. All rights reserved.</p>
 </footer>
 
+<<<<<<< HEAD
 <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode"><i class="fas fa-sun"></i></button>
 <button class="back-to-top" onclick="scrollToTop()" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+=======
+<button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-sun"></i></button>
+<button class="back-to-top" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+>>>>>>> 147714e1252828d843adb45839ee14a7bd109a3a
 
 <script>
     function toggleTheme() {
